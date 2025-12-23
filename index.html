@@ -1,41 +1,49 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guide de la Sécurité Incendie - CTS & ERP Type L</title>
-    
+    <title>Guide de la Sécurité Incendie - ERP Type L & CTS</title>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
         /* Styles harmonisés avec le Portail */
         :root {
-            --color-primary: #1F2937;      /* Gris anthracite */
-            --color-secondary: #6B7280;     /* Gris secondaire */
-            --color-accent: #ea580c;        /* Orange sécurité (harmonisé) */
-            --color-success: #059669;       /* Vert conformité */
-            --color-warning: #D97706;       /* Orange attention */
-            --color-structure: #334155;     /* Ardoise structure */
-            --color-background: #FDFBF7;    /* Fond papier chaud */
+            --color-primary: #1F2937;
+            /* Gris anthracite */
+            --color-secondary: #6B7280;
+            /* Gris secondaire */
+            --color-accent: #ea580c;
+            /* Orange sécurité (harmonisé) */
+            --color-success: #059669;
+            /* Vert conformité */
+            --color-warning: #D97706;
+            /* Orange attention */
+            --color-structure: #334155;
+            /* Ardoise structure */
+            --color-background: #FDFBF7;
+            /* Fond papier chaud */
         }
-        
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f9fafb;
             color: var(--color-primary);
             scroll-behavior: auto !important;
         }
-        
+
         /* Styles pour tous les onglets */
         .tab-content {
             display: none;
@@ -51,6 +59,7 @@
                 opacity: 0;
                 transform: translateY(10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -62,14 +71,14 @@
             color: #ea580c;
             font-weight: 600;
         }
-        
+
         /* Navigation Active State - Harmonisé */
         .nav-active {
             border-bottom: 2px solid var(--color-accent);
             color: var(--color-accent);
             font-weight: 600;
         }
-        
+
         /* Chart Containers */
         .chart-container {
             position: relative;
@@ -80,23 +89,30 @@
             height: 300px;
             max-height: 400px;
         }
-        
+
         @media (min-width: 768px) {
             .chart-container {
                 height: 350px;
             }
         }
-        
+
         /* Smooth Transitions */
         .tab-transition {
             animation: fadeIn 0.3s ease-in-out;
         }
-        
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         /* Custom Scrollbar */
         .custom-scroll::-webkit-scrollbar {
             width: 8px;
@@ -116,66 +132,174 @@
         .custom-scroll::-webkit-scrollbar-thumb:hover {
             background: #a1a1a1;
         }
-        
+
         /* Card Hover Effects */
         .card-hover {
             transition: all 0.3s ease;
         }
-        
+
         .card-hover:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
-        
+
         /* Priority Indicators */
-        .priority-1 { border-left-color: var(--color-accent); }
-        .priority-2 { border-left-color: var(--color-structure); }
-        .priority-3 { border-left-color: var(--color-success); }
-        
+        .priority-1 {
+            border-left-color: var(--color-accent);
+        }
+
+        .priority-2 {
+            border-left-color: var(--color-structure);
+        }
+
+        .priority-3 {
+            border-left-color: var(--color-success);
+        }
+
         /* Custom colors for Tailwind */
-        .text-accent { color: var(--color-accent); }
-        .bg-accent { background-color: var(--color-accent); }
-        .text-success { color: var(--color-success); }
-        .bg-success { background-color: var(--color-success); }
-        .text-warning { color: var(--color-warning); }
-        .bg-warning { background-color: var(--color-warning); }
-        .border-accent { border-color: var(--color-accent); }
-        .border-success { border-color: var(--color-success); }
-        .border-warning { border-color: var(--color-warning); }
-        .accent-success { accent-color: var(--color-success); }
-        .accent-warning { accent-color: var(--color-warning); }
-        .accent-structure { accent-color: var(--color-structure); }
-        
+        .text-accent {
+            color: var(--color-accent);
+        }
+
+        .bg-accent {
+            background-color: var(--color-accent);
+        }
+
+        .text-success {
+            color: var(--color-success);
+        }
+
+        .bg-success {
+            background-color: var(--color-success);
+        }
+
+        .text-warning {
+            color: var(--color-warning);
+        }
+
+        .bg-warning {
+            background-color: var(--color-warning);
+        }
+
+        .border-accent {
+            border-color: var(--color-accent);
+        }
+
+        .border-success {
+            border-color: var(--color-success);
+        }
+
+        .border-warning {
+            border-color: var(--color-warning);
+        }
+
+        .accent-success {
+            accent-color: var(--color-success);
+        }
+
+        .accent-warning {
+            accent-color: var(--color-warning);
+        }
+
+        .accent-structure {
+            accent-color: var(--color-structure);
+        }
+
         /* Pulse animation for beta badge */
         @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.7; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
-        
+
         .pulse {
             animation: pulse 2s infinite;
         }
-        
+
         /* Assurer que la page commence toujours en haut */
         html {
             scroll-behavior: auto !important;
         }
-        
+
         /* Additional styles from maquette */
         .tab-active {
             border-bottom: 2px solid #ea580c;
             color: #ea580c;
             font-weight: 600;
         }
-        
-        .section-hidden { display: none; }
-        .section-visible { 
-            display: block; 
-            animation: fadeIn 0.3s ease-in-out; 
+
+        .section-hidden {
+            display: none;
+        }
+
+        .section-visible {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        /* Styles pour la théorie du feu */
+        .fire-theory-card {
+            transition: all 0.3s ease;
+            border-left-width: 4px;
+        }
+
+        .fire-theory-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styles pour l'extincteur */
+        .extinguisher-btn {
+            transition: all 0.2s ease;
+        }
+
+        .extinguisher-btn:hover {
+            transform: scale(1.02);
+        }
+
+        .extinguisher-btn.active {
+            border-color: #ea580c;
+            background-color: #fff7ed;
+        }
+
+        /* Styles pour les rôles d'évacuation */
+        .role-btn {
+            transition: all 0.3s ease;
+        }
+
+        .role-btn.active {
+            background-color: #ea580c;
+            color: white;
+            box-shadow: 0 4px 6px rgba(234, 88, 12, 0.2);
+        }
+
+        /* Animation pour l'apparition des contenus */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-in {
+            animation: slideIn 0.4s ease-out forwards;
         }
     </style>
 </head>
+
 <body class="bg-gray-50 text-gray-800 font-sans">
 
     <!-- ===== EN-TÊTE HARMONISÉ ===== -->
@@ -185,11 +309,13 @@
                 <div class="flex items-center">
                     <span class="text-2xl mr-2"></span>
                     <h1 class="text-xl font-bold tracking-tight text-slate-700">Guide de la Sécurité Incendie
-                        <span class="text-orange-600 text-sm font-normal uppercase ml-2 tracking-widest">CTS & ERP</span>
+                        <span class="text-orange-600 text-sm font-normal uppercase ml-2 tracking-widest">CTS &
+                            ERP</span>
                     </h1>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button onclick="window.location.href='https://fi-regie.github.io/Portail-Securite-CTS-ERP-Type-L/#accueil';"
+                    <button
+                        onclick="window.location.href='https://fi-regie.github.io/Portail-Securite-CTS-ERP-Type-L/#accueil';"
                         class="text-sm text-stone-500 hover:text-orange-600 transition flex items-center hidden sm:inline-flex">
                         <i class="fas fa-arrow-left mr-2"></i>
                         Retour à l'accueil
@@ -222,7 +348,17 @@
                 <button onclick="app.navigate('evacuation')"
                     class="nav-tab px-6 py-4 border-b-2 border-transparent text-gray-600 hover:text-orange-600 whitespace-nowrap flex items-center">
                     <i class="fas fa-door-open mr-2"></i>
-                    Évacuation
+                    Évacuation & Rôles
+                </button>
+                <button onclick="app.navigate('theory')"
+                    class="nav-tab px-6 py-4 border-b-2 border-transparent text-gray-600 hover:text-orange-600 whitespace-nowrap flex items-center">
+                    <i class="fas fa-fire mr-2"></i>
+                    Théorie du Feu
+                </button>
+                <button onclick="app.navigate('extinguishers')"
+                    class="nav-tab px-6 py-4 border-b-2 border-transparent text-gray-600 hover:text-orange-600 whitespace-nowrap flex items-center">
+                    <i class="fas fa-fire-extinguisher mr-2"></i>
+                    Extincteurs
                 </button>
                 <button onclick="app.navigate('cts')"
                     class="nav-tab px-6 py-4 border-b-2 border-transparent text-gray-600 hover:text-orange-600 whitespace-nowrap flex items-center">
@@ -241,22 +377,23 @@
     <!-- Main Content -->
     <main class="flex-grow py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
+
             <!-- ===== DASHBOARD VIEW ===== -->
             <div id="view-dashboard" class="space-y-8 tab-transition active">
                 <!-- Welcome & Context - Style harmonisé -->
                 <div class="bg-white rounded-xl shadow-sm border border-stone-100 p-6 md:p-8">
                     <h1 class="text-3xl font-bold text-slate-800 mb-4">Portail de la Sécurité Incendie</h1>
                     <p class="text-stone-600 leading-relaxed mb-6">
-                        Ce portail rassemble l'ensemble des outils réglementaires pour la sécurité du spectacle vivant. 
-                        Conçu pour les directeurs techniques, régisseurs et exploitants, il synthétise les obligations 
+                        Ce portail rassemble l'ensemble des outils réglementaires pour la sécurité du spectacle vivant.
+                        Conçu pour les directeurs techniques, régisseurs et exploitants, il synthétise les obligations
                         des ERP Type L (salles) et CTS (chapiteaux), avec les dernières évolutions législatives.
                     </p>
-                    
+
                     <div class="bg-blue-50 p-4 rounded-lg border border-blue-200 mb-6">
                         <h3 class="font-bold text-blue-800 mb-2">📋 Mission du Régisseur Responsable Technique</h3>
                         <p class="text-sm text-blue-700">
-                            En tant que responsable technique, vous devez garantir la conformité réglementaire de l'établissement 
+                            En tant que responsable technique, vous devez garantir la conformité réglementaire de
+                            l'établissement
                             avant toute ouverture au public. Ce portail vous fournit les outils pour :
                         </p>
                         <ul class="text-sm text-blue-700 mt-2 list-disc list-inside">
@@ -267,7 +404,7 @@
                             <li>Préparer le dossier de sécurité pour la commission</li>
                         </ul>
                     </div>
-                    
+
                     <!-- Principes Fondamentaux -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                         <div class="priority-1 bg-white p-6 rounded-xl border-l-4 border-accent shadow-sm">
@@ -277,9 +414,10 @@
                                 </div>
                                 <h3 class="font-bold text-slate-700">Sécurité des Personnes</h3>
                             </div>
-                            <p class="text-sm text-gray-600">L'évacuation rapide et sûre du public est l'objectif premier. Toutes les dispositions techniques doivent y concourir.</p>
+                            <p class="text-sm text-gray-600">L'évacuation rapide et sûre du public est l'objectif
+                                premier. Toutes les dispositions techniques doivent y concourir.</p>
                         </div>
-                        
+
                         <div class="priority-2 bg-white p-6 rounded-xl border-l-4 border-structure shadow-sm">
                             <div class="flex items-center mb-4">
                                 <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-3">
@@ -287,9 +425,10 @@
                                 </div>
                                 <h3 class="font-bold text-slate-700">Lutte contre l'Incendie</h3>
                             </div>
-                            <p class="text-sm text-gray-600">Limitation des risques d'éclosion, de développement et de propagation du feu par des mesures constructives et organisationnelles.</p>
+                            <p class="text-sm text-gray-600">Limitation des risques d'éclosion, de développement et de
+                                propagation du feu par des mesures constructives et organisationnelles.</p>
                         </div>
-                        
+
                         <div class="priority-3 bg-white p-6 rounded-xl border-l-4 border-success shadow-sm">
                             <div class="flex items-center mb-4">
                                 <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
@@ -297,11 +436,12 @@
                                 </div>
                                 <h3 class="font-bold text-slate-700">Conformité Réglementaire</h3>
                             </div>
-                            <p class="text-sm text-gray-600">Respect strict des arrêtés 1980 (ERP) et 1985 (CTS). La commission de sécurité vérifie l'application intégrale des textes.</p>
+                            <p class="text-sm text-gray-600">Respect strict des arrêtés 1980 (ERP) et 1985 (CTS). La
+                                commission de sécurité vérifie l'application intégrale des textes.</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Quick Stats - Style harmonisé -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 card-hover">
@@ -316,7 +456,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 card-hover">
                         <div class="flex items-center justify-between">
                             <div>
@@ -329,7 +469,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 card-hover">
                         <div class="flex items-center justify-between">
                             <div>
@@ -342,7 +482,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 card-hover">
                         <div class="flex items-center justify-between">
                             <div>
@@ -356,116 +496,186 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Quick Access Grid - Style harmonisé -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div onclick="app.navigate('classification')" class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:border-accent cursor-pointer card-hover">
+                    <div onclick="app.navigate('theory')"
+                        class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:border-accent cursor-pointer card-hover">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-fire text-red-600 text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900">Théorie du Feu</h3>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4">Comprendre le triangle du feu, les classes de feu et les
+                            modes de propagation.</p>
+                        <span class="text-xs text-accent font-medium">Accéder <i
+                                class="fas fa-arrow-right ml-1"></i></span>
+                    </div>
+
+                    <div onclick="app.navigate('extinguishers')"
+                        class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:border-warning cursor-pointer card-hover">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-fire-extinguisher text-orange-600 text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900">Guide des Extincteurs</h3>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4">Savoir choisir et utiliser le bon extincteur selon la
+                            classe de feu.</p>
+                        <span class="text-xs text-warning font-medium">Accéder <i
+                                class="fas fa-arrow-right ml-1"></i></span>
+                    </div>
+
+                    <div onclick="app.navigate('evacuation')"
+                        class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:border-success cursor-pointer card-hover">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-users text-emerald-600 text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900">Rôles d'Évacuation</h3>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4">Guide-file et Serre-file : missions et responsabilités
+                            lors d'une évacuation.</p>
+                        <span class="text-xs text-success font-medium">Accéder <i
+                                class="fas fa-arrow-right ml-1"></i></span>
+                    </div>
+                </div>
+
+
+                <!-- Quick Access Grid - Style harmonisé 2 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div onclick="app.navigate('classification')"
+                        class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:border-accent cursor-pointer card-hover">
                         <div class="flex items-center mb-4">
                             <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
                                 <i class="fas fa-calculator text-blue-600 text-xl"></i>
                             </div>
                             <h3 class="font-bold text-gray-900">Calculateur de Catégorie</h3>
                         </div>
-                        <p class="text-sm text-gray-600 mb-4">Déterminez la catégorie de votre ERP en fonction de la jauge. Intégration des articles GN.</p>
-                        <span class="text-xs text-accent font-medium">Accéder <i class="fas fa-arrow-right ml-1"></i></span>
+                        <p class="text-sm text-gray-600 mb-4">Déterminez la catégorie de votre ERP en fonction de la
+                            jauge. Intégration des articles GN.</p>
+                        <span class="text-xs text-accent font-medium">Accéder <i
+                                class="fas fa-arrow-right ml-1"></i></span>
                     </div>
-                    
-                    <div onclick="app.navigate('cts')" class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:border-warning cursor-pointer card-hover">
+
+                    <div onclick="app.navigate('cts')"
+                        class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:border-warning cursor-pointer card-hover">
                         <div class="flex items-center mb-4">
                             <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
                                 <i class="fas fa-wind text-orange-600 text-xl"></i>
                             </div>
                             <h3 class="font-bold text-gray-900">Simulateur Vent CTS</h3>
                         </div>
-                        <p class="text-sm text-gray-600 mb-4">Vérifiez les conditions météo pour chapiteaux selon l'Arrêté 1985.</p>
-                        <span class="text-xs text-warning font-medium">Accéder <i class="fas fa-arrow-right ml-1"></i></span>
+                        <p class="text-sm text-gray-600 mb-4">Vérifiez les conditions météo pour chapiteaux selon
+                            l'Arrêté 1985.</p>
+                        <span class="text-xs text-warning font-medium">Accéder <i
+                                class="fas fa-arrow-right ml-1"></i></span>
                     </div>
-                    
-                    <div onclick="app.navigate('evacuation')" class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:border-success cursor-pointer card-hover">
+
+                    <div onclick="app.navigate('evacuation')"
+                        class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:border-success cursor-pointer card-hover">
                         <div class="flex items-center mb-4">
                             <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mr-4">
                                 <i class="fas fa-door-open text-emerald-600 text-xl"></i>
                             </div>
                             <h3 class="font-bold text-gray-900">Calcul des Dégagements</h3>
                         </div>
-                        <p class="text-sm text-gray-600 mb-4">Dimensionnez les sorties selon l'affluence. Application des articles CO.</p>
-                        <span class="text-xs text-success font-medium">Accéder <i class="fas fa-arrow-right ml-1"></i></span>
+                        <p class="text-sm text-gray-600 mb-4">Dimensionnez les sorties selon l'affluence. Application
+                            des articles CO.</p>
+                        <span class="text-xs text-success font-medium">Accéder <i
+                                class="fas fa-arrow-right ml-1"></i></span>
                     </div>
                 </div>
-                
+
                 <!-- Overview Chart -->
                 <div class="bg-white rounded-xl shadow-sm border border-stone-100 p-6">
-                    <h3 class="text-lg font-semibold text-slate-700 mb-4">Répartition des Responsabilités du Régisseur</h3>
+                    <h3 class="text-lg font-semibold text-slate-700 mb-4">Répartition des Responsabilités du Régisseur
+                    </h3>
                     <div class="chart-container">
                         <canvas id="overviewChart"></canvas>
                     </div>
                     <div class="mt-4 text-sm text-gray-600">
-                        <p><strong>Analyse :</strong> La sécurité incendie représente 35% des préoccupations réglementaires du régisseur, suivie par la solidité des structures (25%).</p>
+                        <p><strong>Analyse :</strong> La sécurité incendie représente 35% des préoccupations
+                            réglementaires du régisseur, suivie par la solidité des structures (25%).</p>
                     </div>
                 </div>
             </div>
-            
+
             <!-- ===== CLASSIFICATION VIEW ===== -->
             <div id="view-classification" class="hidden space-y-8 tab-transition">
                 <div class="bg-white rounded-xl shadow-sm border border-stone-100 p-6">
                     <h2 class="text-2xl font-semibold text-slate-700 mb-2">Classification des ERP - Articles GN</h2>
                     <p class="text-stone-600 mb-6">
-                        La catégorie de votre établissement détermine la sévérité des règles (SSIAP, visites de commission, etc.). 
-                        Elle est calculée selon l'effectif total (public + personnel non indispensable). Le classement est défini par l'article GN 2 de l'Arrêté du 25 juin 1980.
+                        La catégorie de votre établissement détermine la sévérité des règles (SSIAP, visites de
+                        commission, etc.).
+                        Elle est calculée selon l'effectif total (public + personnel non indispensable). Le classement
+                        est défini par l'article GN 2 de l'Arrêté du 25 juin 1980.
                     </p>
-                    
+
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         <!-- Calculator -->
                         <div class="lg:col-span-1 bg-gray-50 p-6 rounded-xl border-t-4 border-structure">
                             <h4 class="text-lg font-bold text-gray-800 mb-4">Calculateur de Catégorie</h4>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Effectif Total (Personnes)</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Effectif Total
+                                (Personnes)</label>
                             <div class="flex items-center space-x-2 mb-6">
-                                <input type="number" id="capacityInput" value="450" min="0" max="10000" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-accent focus:ring-accent sm:text-lg p-3 border bg-white">
-                                <button onclick="calculateCategory()" class="bg-structure text-white px-4 py-3 rounded-md hover:bg-gray-800 transition">
+                                <input type="number" id="capacityInput" value="450" min="0" max="10000"
+                                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-accent focus:ring-accent sm:text-lg p-3 border bg-white">
+                                <button onclick="calculateCategory()"
+                                    class="bg-structure text-white px-4 py-3 rounded-md hover:bg-gray-800 transition">
                                     <i class="fas fa-calculator mr-2"></i>Calculer
                                 </button>
                             </div>
-                            
+
                             <div id="categoryResult" class="bg-white rounded-lg p-4 border border-gray-200">
                                 <h4 class="text-sm uppercase tracking-wide text-gray-500 font-bold mb-1">Classement</h4>
                                 <p id="catText" class="text-3xl font-bold text-accent mb-2">3ème Catégorie</p>
                                 <p id="catDesc" class="text-sm text-gray-600">Entre 301 et 700 personnes.</p>
                                 <div class="mt-4 pt-4 border-t border-gray-200">
                                     <h5 class="text-xs font-bold text-gray-700 mb-1">Implications Clés :</h5>
-                                    <p id="catImplication" class="text-sm text-gray-600 italic">Visite périodique tous les 3 ans. Présence SSIAP requise selon risque. Registre de sécurité obligatoire.</p>
+                                    <p id="catImplication" class="text-sm text-gray-600 italic">Visite périodique tous
+                                        les 3 ans. Présence SSIAP requise selon risque. Registre de sécurité
+                                        obligatoire.</p>
                                 </div>
                             </div>
-                            
+
                             <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                                <h5 class="font-bold text-blue-800 text-sm mb-2">📝 Pour le Régisseur :</h5>
+                                <h5 class="font-bold text-blue-800 text-sm mb-2">🎓 Pour la :</h5>
                                 <p class="text-xs text-blue-700">
-                                    La catégorie détermine la fréquence des visites de commission et les obligations de moyens (SSIAP, équipements). 
-                                    Conservez le justificatif de calcul dans votre dossier de sécurité.
+                                    La catégorie détermine la fréquence des visites de commission et les obligations de
+                                    moyens (SSIAP, équipements).
+                                    Cet outil permet aux stagiaires de comprendre l'impact de la jauge sur les
+                                    obligations réglementaires.
                                 </p>
                             </div>
                         </div>
-                        
+
                         <!-- Chart -->
                         <div class="lg:col-span-2">
-                            <h4 class="text-sm font-semibold text-gray-500 mb-4 uppercase">Seuils Réglementaires (ERP Type L)</h4>
+                            <h4 class="text-sm font-semibold text-gray-500 mb-4 uppercase">Seuils Réglementaires (ERP
+                                Type L)</h4>
                             <div class="chart-container">
                                 <canvas id="classificationChart"></canvas>
                             </div>
-                            <p class="text-xs text-gray-400 mt-2 text-center">Les seuils de 300, 700 et 1500 personnes marquent les changements de catégorie (Article GN 2).</p>
-                            
+                            <p class="text-xs text-gray-400 mt-2 text-center">Les seuils de 300, 700 et 1500 personnes
+                                marquent les changements de catégorie (Article GN 2).</p>
+
                             <div class="mt-6 grid grid-cols-2 gap-4">
                                 <div class="bg-gray-50 p-4 rounded-lg">
                                     <h5 class="font-bold text-gray-700 text-sm mb-2">Premier Groupe</h5>
-                                    <p class="text-xs text-gray-600">Catégories 1 à 4. Soumis à l'ensemble des dispositions du règlement.</p>
+                                    <p class="text-xs text-gray-600">Catégories 1 à 4. Soumis à l'ensemble des
+                                        dispositions du règlement.</p>
                                 </div>
                                 <div class="bg-gray-50 p-4 rounded-lg">
                                     <h5 class="font-bold text-gray-700 text-sm mb-2">Second Groupe</h5>
-                                    <p class="text-xs text-gray-600">5ème catégorie. Règles allégées mais obligations de sécurité maintenues.</p>
+                                    <p class="text-xs text-gray-600">5ème catégorie. Règles allégées mais obligations de
+                                        sécurité maintenues.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Reference Table -->
                     <div class="mt-8">
                         <h3 class="text-lg font-semibold text-slate-700 mb-4">Tableau de Référence des Catégories</h3>
@@ -473,69 +683,88 @@
                             <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
                                     <tr>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Groupe</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Catégorie</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Seuil</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Implications pour le Régisseur</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                                            Groupe</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                                            Catégorie</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                                            Seuil</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                                            Implications pour la Formation</th>
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
                                     <tr>
                                         <td class="px-6 py-4 font-bold" rowspan="4">1er Groupe</td>
-                                        <td class="px-6 py-4"><span class="font-bold text-red-600">1ère Catégorie</span></td>
+                                        <td class="px-6 py-4"><span class="font-bold text-red-600">1ère Catégorie</span>
+                                        </td>
                                         <td class="px-6 py-4">> 1500 personnes</td>
-                                        <td class="px-6 py-4 text-sm">SSIAP permanent 24h/24. Visites commission tous les 3 ans. Dossier de sécurité très complet.</td>
+                                        <td class="px-6 py-4 text-sm">SSIAP niveau 1 obligatoire. Visites commission
+                                            tous les 3 ans. Dossier de sécurité très complet.</td>
                                     </tr>
                                     <tr>
-                                        <td class="px-6 py-4"><span class="font-bold text-orange-600">2ème Catégorie</span></td>
+                                        <td class="px-6 py-4"><span class="font-bold text-orange-600">2ème
+                                                Catégorie</span></td>
                                         <td class="px-6 py-4">701 à 1500</td>
-                                        <td class="px-6 py-4 text-sm">SSIAP adapté aux horaires d'ouverture. Visites tous les 3 ans. Registre de sécurité vérifié annuellement.</td>
+                                        <td class="px-6 py-4 text-sm">SSIAP adapté aux horaires d'ouverture. à
+                                            l'évacuation obligatoire. Registre de sécurité vérifié annuellement.</td>
                                     </tr>
                                     <tr>
-                                        <td class="px-6 py-4"><span class="font-bold text-yellow-600">3ème Catégorie</span></td>
+                                        <td class="px-6 py-4"><span class="font-bold text-yellow-600">3ème
+                                                Catégorie</span></td>
                                         <td class="px-6 py-4">301 à 700</td>
-                                        <td class="px-6 py-4 text-sm">SSIAP selon risque. Visites tous les 3 ans. Formation du personnel obligatoire.</td>
+                                        <td class="px-6 py-4 text-sm">SSIAP selon risque. du personnel obligatoire.
+                                            Exercice d'évacuation annuel.</td>
                                     </tr>
                                     <tr>
-                                        <td class="px-6 py-4"><span class="font-bold text-green-600">4ème Catégorie</span></td>
+                                        <td class="px-6 py-4"><span class="font-bold text-green-600">4ème
+                                                Catégorie</span></td>
                                         <td class="px-6 py-4">≤ 300 personnes</td>
-                                        <td class="px-6 py-4 text-sm">Règles allégées mais registre obligatoire. Visites tous les 5 ans.</td>
+                                        <td class="px-6 py-4 text-sm">Règles allégées mais registre obligatoire. de base
+                                            à la sécurité incendie requise.</td>
                                     </tr>
                                     <tr class="bg-gray-50">
                                         <td class="px-6 py-4 font-bold">2ème Groupe</td>
-                                        <td class="px-6 py-4"><span class="font-bold text-blue-600">5ème Catégorie</span></td>
+                                        <td class="px-6 py-4"><span class="font-bold text-blue-600">5ème
+                                                Catégorie</span></td>
                                         <td class="px-6 py-4">Seuil spécifique par type (ex: L: 200 pers.)</td>
-                                        <td class="px-6 py-4 text-sm">Règlementation minimale mais obligations fondamentales : issues dégagées, extincteurs, alarme.</td>
+                                        <td class="px-6 py-4 text-sm">Règlementation minimale mais obligations
+                                            fondamentales : issues dégagées, extincteurs, alarme. Sensibilisation
+                                            obligatoire.</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    
+
                     <!-- Conseil Pratique -->
                     <div class="mt-8 bg-amber-50 p-6 rounded-xl border border-amber-200">
-                        <h4 class="font-bold text-amber-800 mb-3">⚠️ Attention au Calcul de l'Effectif</h4>
+                        <h4 class="font-bold text-amber-800 mb-3">⚠️ Exercice Pédagogique : Calcul d'Effectif</h4>
                         <p class="text-sm text-amber-700 mb-3">
-                            <strong>L'effectif total comprend :</strong> Public + Personnel non indispensable à la sécurité. 
-                            Pour un spectacle, incluez les artistes en scène. Pour une salle de conférence, incluez les intervenants.
+                            <strong>Scénario pour les stagiaires :</strong> Un spectacle accueille 250 spectateurs, avec
+                            5 artistes sur scène, 3 techniciens en régie, et 2 agents d'accueil. Quel est l'effectif
+                            total à considérer pour la classification ?
                         </p>
                         <p class="text-sm text-amber-700">
-                            <strong>Piège fréquent :</strong> Ne pas inclure le personnel technique présent pendant l'exploitation. 
-                            Toute personne présente compte dans les calculs de dégagements.
+                            <strong>Réponse :</strong> 250 (public) + 5 (artistes) + 3 (techniciens) + 2 (accueil) = 260
+                            personnes. L'établissement est en 4ème catégorie (≤300 personnes).
                         </p>
                     </div>
                 </div>
             </div>
-            
+
             <!-- ===== MATERIALS VIEW ===== -->
             <div id="view-materials" class="hidden space-y-8 tab-transition">
                 <div class="bg-white rounded-xl shadow-sm border border-stone-100 p-6">
-                    <h2 class="text-2xl font-semibold text-slate-700 mb-2">Matériaux & Réaction au Feu - Articles AM</h2>
+                    <h2 class="text-2xl font-semibold text-slate-700 mb-2">Matériaux & Réaction au Feu - Articles AM
+                    </h2>
                     <p class="text-stone-600 mb-6">
-                        L'objectif est de limiter la masse combustible. Les matériaux sont classés de <strong>M0 (Incombustible)</strong> à <strong>M4 (Facilement Inflammable)</strong>.
-                        L'<strong>Ignifugation</strong> permet d'améliorer ce classement. Le classement M1 est obligatoire pour tous les décors, rideaux et vélums.
+                        L'objectif est de limiter la masse combustible. Les matériaux sont classés de <strong>M0
+                            (Incombustible)</strong> à <strong>M4 (Facilement Inflammable)</strong>.
+                        L'<strong>Ignifugation</strong> permet d'améliorer ce classement. Le classement M1 est
+                        obligatoire pour tous les décors, rideaux et vélums.
                     </p>
-                    
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                         <!-- Chart -->
                         <div class="bg-gray-50 p-6 rounded-xl">
@@ -544,64 +773,81 @@
                                 <canvas id="materialsChart"></canvas>
                             </div>
                             <div class="mt-4 flex justify-center space-x-4 text-xs">
-                                <span class="flex items-center"><span class="w-3 h-3 bg-gray-400 rounded-full mr-1"></span> M0 Structure</span>
-                                <span class="flex items-center"><span class="w-3 h-3 bg-success rounded-full mr-1"></span> M1 Décors</span>
-                                <span class="flex items-center"><span class="w-3 h-3 bg-warning rounded-full mr-1"></span> M2/M3 Mobilier</span>
+                                <span class="flex items-center"><span
+                                        class="w-3 h-3 bg-gray-400 rounded-full mr-1"></span> M0 Structure</span>
+                                <span class="flex items-center"><span
+                                        class="w-3 h-3 bg-success rounded-full mr-1"></span> M1 Décors</span>
+                                <span class="flex items-center"><span
+                                        class="w-3 h-3 bg-warning rounded-full mr-1"></span> M2/M3 Mobilier</span>
                             </div>
                         </div>
-                        
+
                         <!-- Materials Cards -->
                         <div class="space-y-4">
-                            <div id="m0-card" onclick="highlightMaterial(0)" class="material-card p-4 rounded-lg border-l-4 border-gray-400 bg-white shadow-sm hover:shadow-md transition cursor-pointer">
+                            <div id="m0-card" onclick="highlightMaterial(0)"
+                                class="material-card p-4 rounded-lg border-l-4 border-gray-400 bg-white shadow-sm hover:shadow-md transition cursor-pointer">
                                 <div class="flex justify-between items-center">
                                     <h4 class="font-bold text-gray-900">Classement M0</h4>
-                                    <span class="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600">Incombustible</span>
+                                    <span
+                                        class="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600">Incombustible</span>
                                 </div>
-                                <p class="text-sm text-gray-600 mt-2">Pierre, brique, ciment, verre, métal. Utilisé pour les structures porteuses. Pas de contribution au feu.</p>
+                                <p class="text-sm text-gray-600 mt-2">Pierre, brique, ciment, verre, métal. Utilisé pour
+                                    les structures porteuses. Pas de contribution au feu.</p>
                                 <div class="mt-3 text-xs text-gray-500">
                                     <strong>Usage :</strong> Structures, murs porteurs, charpentes
                                 </div>
                             </div>
-                            
-                            <div id="m1-card" onclick="highlightMaterial(1)" class="material-card p-4 rounded-lg border-l-4 border-success bg-green-50 shadow-sm hover:shadow-md transition cursor-pointer">
+
+                            <div id="m1-card" onclick="highlightMaterial(1)"
+                                class="material-card p-4 rounded-lg border-l-4 border-success bg-green-50 shadow-sm hover:shadow-md transition cursor-pointer">
                                 <div class="flex justify-between items-center">
                                     <h4 class="font-bold text-green-900">Classement M1</h4>
-                                    <span class="text-xs bg-green-100 px-2 py-1 rounded text-green-700">Non Inflammable</span>
+                                    <span class="text-xs bg-green-100 px-2 py-1 rounded text-green-700">Non
+                                        Inflammable</span>
                                 </div>
-                                <p class="text-sm text-green-800 mt-2">Combustible mais ne propage pas le feu. <strong>Obligatoire</strong> pour les décors, rideaux, vélums, plafonds suspendus.</p>
+                                <p class="text-sm text-green-800 mt-2">Combustible mais ne propage pas le feu.
+                                    <strong>Obligatoire</strong> pour les décors, rideaux, vélums, plafonds suspendus.
+                                </p>
                                 <div class="mt-3 text-xs text-green-700">
                                     <strong>Obligation :</strong> PV de réaction au feu obligatoire pour tous les décors
                                 </div>
                             </div>
-                            
-                            <div id="m2-card" onclick="highlightMaterial(2)" class="material-card p-4 rounded-lg border-l-4 border-warning bg-white shadow-sm hover:shadow-md transition cursor-pointer">
+
+                            <div id="m2-card" onclick="highlightMaterial(2)"
+                                class="material-card p-4 rounded-lg border-l-4 border-warning bg-white shadow-sm hover:shadow-md transition cursor-pointer">
                                 <div class="flex justify-between items-center">
                                     <h4 class="font-bold text-gray-900">Classement M2</h4>
-                                    <span class="text-xs bg-orange-100 px-2 py-1 rounded text-orange-700">Difficilement Inflammable</span>
+                                    <span class="text-xs bg-orange-100 px-2 py-1 rounded text-orange-700">Difficilement
+                                        Inflammable</span>
                                 </div>
-                                <p class="text-sm text-gray-600 mt-2">Autorisé pour certains sièges capitonnés ou revêtements de sol. Nécessite souvent ignifugation.</p>
+                                <p class="text-sm text-gray-600 mt-2">Autorisé pour certains sièges capitonnés ou
+                                    revêtements de sol. Nécessite souvent ignifugation.</p>
                                 <div class="mt-3 text-xs text-gray-500">
                                     <strong>Usage conditionnel :</strong> Mobilier fixe, certains revêtements
                                 </div>
                             </div>
-                            
-                            <div id="m4-card" onclick="highlightMaterial(3)" class="material-card p-4 rounded-lg border-l-4 border-accent bg-red-50 shadow-sm hover:shadow-md transition cursor-pointer">
+
+                            <div id="m4-card" onclick="highlightMaterial(3)"
+                                class="material-card p-4 rounded-lg border-l-4 border-accent bg-red-50 shadow-sm hover:shadow-md transition cursor-pointer">
                                 <div class="flex justify-between items-center">
                                     <h4 class="font-bold text-gray-900">Classement M3 / M4</h4>
-                                    <span class="text-xs bg-red-100 px-2 py-1 rounded text-red-700">Interdit / Risque</span>
+                                    <span class="text-xs bg-red-100 px-2 py-1 rounded text-red-700">Interdit /
+                                        Risque</span>
                                 </div>
-                                <p class="text-sm text-gray-600 mt-2">Moyennement à Facilement inflammable. Généralement interdits dans les zones accessibles au public.</p>
+                                <p class="text-sm text-gray-600 mt-2">Moyennement à Facilement inflammable. Généralement
+                                    interdits dans les zones accessibles au public.</p>
                                 <div class="mt-3 text-xs text-red-600">
-                                    <strong>Attention :</strong> Interdits sauf dérogation exceptionnelle avec compensations
+                                    <strong>Attention :</strong> Interdits sauf dérogation exceptionnelle avec
+                                    compensations
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Conseils Pratiques -->
                     <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="bg-blue-50 p-5 rounded-xl border border-blue-200">
-                            <h4 class="font-bold text-blue-800 mb-3">📋 Checklist Matériaux pour le Régisseur</h4>
+                            <h4 class="font-bold text-blue-800 mb-3">📋 Checklist Matériaux pour la Formation</h4>
                             <ul class="space-y-2 text-sm text-blue-700">
                                 <li class="flex items-start">
                                     <i class="fas fa-check-circle text-blue-600 mr-2 mt-1"></i>
@@ -621,7 +867,7 @@
                                 </li>
                             </ul>
                         </div>
-                        
+
                         <div class="bg-amber-50 p-5 rounded-xl border border-amber-200">
                             <h4 class="font-bold text-amber-800 mb-3">⚠️ Points de Vigilance Fréquents</h4>
                             <ul class="space-y-2 text-sm text-amber-700">
@@ -644,10 +890,11 @@
                             </ul>
                         </div>
                     </div>
-                    
+
                     <!-- Common Violations -->
                     <div class="mt-8">
-                        <h3 class="text-lg font-semibold text-slate-700 mb-4">Causes Fréquentes d'Avis Défavorable (Commission de Sécurité)</h3>
+                        <h3 class="text-lg font-semibold text-slate-700 mb-4">Causes Fréquentes d'Avis Défavorable
+                            (Commission de Sécurité)</h3>
                         <div class="chart-container">
                             <canvas id="violationsChart"></canvas>
                         </div>
@@ -657,394 +904,1006 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- ===== EVACUATION VIEW ===== -->
+
+            <!-- ===== THEORY VIEW (from maquette) ===== -->
+            <div id="view-theory" class="hidden space-y-8 tab-transition">
+                <div class="bg-white rounded-xl shadow-sm border border-stone-100 p-6">
+                    <h2 class="text-2xl font-semibold text-slate-700 mb-4">Théorie du Feu - Comprendre le Mécanisme</h2>
+                    <p class="text-stone-600 mb-6">
+                        Pour éteindre un feu, il faut comprendre ce qui le maintient en vie. Le concept fondamental est
+                        le "Triangle du Feu".
+                        Si l'un des trois éléments est supprimé, la combustion cesse. Cette connaissance est essentielle
+                        pour choisir la bonne méthode d'extinction.
+                    </p>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                        <!-- Interactive Triangle Visual -->
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-sm flex flex-col items-center">
+                            <h3 class="text-lg font-bold mb-4">Le Triangle du Feu</h3>
+                            <p class="text-xs text-gray-500 mb-6 text-center">Cliquez sur un segment pour comprendre son
+                                rôle.</p>
+                            <div class="chart-container relative">
+                                <canvas id="triangleChart"></canvas>
+                                <!-- Center Icon -->
+                                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                    <span class="text-4xl">🔥</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dynamic Description Box -->
+                        <div
+                            class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-center h-full">
+                            <div id="triangle-info-box">
+                                <h3 id="triangle-title" class="text-2xl font-bold text-red-600 mb-4">Sélectionnez un
+                                    élément</h3>
+                                <p id="triangle-desc" class="text-gray-600 text-lg leading-relaxed">
+                                    Le feu est une réaction chimique de combustion qui nécessite la réunion simultanée
+                                    de trois éléments. Interagissez avec le graphique ci-contre pour explorer :
+                                    <br><br>
+                                    1. Le Combustible<br>
+                                    2. Le Comburant<br>
+                                    3. L'Énergie d'Activation
+                                </p>
+                                <div id="triangle-action" class="mt-6 p-4 bg-gray-50 rounded-lg hidden">
+                                    <span class="font-bold text-gray-800">Méthode d'extinction associée :</span>
+                                    <span id="triangle-action-text" class="text-gray-700 ml-2">...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Classes de Feu -->
+                    <div class="mt-8">
+                        <h3 class="text-lg font-bold text-slate-700 mb-4">Classes de Feu (NF S 60-101)</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                            <div class="bg-red-50 p-4 rounded-lg border border-red-200 text-center">
+                                <div class="text-2xl mb-2">🪵</div>
+                                <h4 class="font-bold text-red-800">Classe A</h4>
+                                <p class="text-xs text-gray-600 mt-1">Feux de solides (bois, papier, tissus)</p>
+                            </div>
+                            <div class="bg-orange-50 p-4 rounded-lg border border-orange-200 text-center">
+                                <div class="text-2xl mb-2">⛽</div>
+                                <h4 class="font-bold text-orange-800">Classe B</h4>
+                                <p class="text-xs text-gray-600 mt-1">Feux de liquides (essence, huile)</p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200 text-center">
+                                <div class="text-2xl mb-2">💨</div>
+                                <h4 class="font-bold text-blue-800">Classe C</h4>
+                                <p class="text-xs text-gray-600 mt-1">Feux de gaz (butane, propane)</p>
+                            </div>
+                            <div class="bg-gray-100 p-4 rounded-lg border border-gray-300 text-center">
+                                <div class="text-2xl mb-2">⚙️</div>
+                                <h4 class="font-bold text-gray-800">Classe D</h4>
+                                <p class="text-xs text-gray-600 mt-1">Feux de métaux (magnésium, aluminium)</p>
+                            </div>
+                            <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200 text-center">
+                                <div class="text-2xl mb-2">🍳</div>
+                                <h4 class="font-bold text-yellow-800">Classe F</h4>
+                                <p class="text-xs text-gray-600 mt-1">Feux d'auxiliaires de cuisson</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Propagation Modes -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                        <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-orange-300">
+                            <div class="text-3xl mb-3">♨️</div>
+                            <h4 class="font-bold text-lg mb-2">Convection</h4>
+                            <p class="text-sm text-gray-600">Transfert de chaleur par le mouvement des gaz chauds et des
+                                fumées qui montent et s'accumulent en hauteur.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-orange-400">
+                            <div class="text-3xl mb-3">➡️</div>
+                            <h4 class="font-bold text-lg mb-2">Conduction</h4>
+                            <p class="text-sm text-gray-600">Transfert de chaleur au travers des matériaux (ex: une
+                                conduite métallique chauffée par un feu traverse un mur).</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-orange-500">
+                            <div class="text-3xl mb-3">☀️</div>
+                            <h4 class="font-bold text-lg mb-2">Rayonnement</h4>
+                            <p class="text-sm text-gray-600">Transmission de chaleur par ondes électromagnétiques, sans
+                                contact direct (comme la chaleur du soleil).</p>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Section -->
+                    <div class="mt-8 bg-blue-50 p-6 rounded-xl border border-blue-200">
+                        <h4 class="font-bold text-blue-800 mb-3">🧠 Quiz de Vérification des Connaissances</h4>
+                        <div class="space-y-4">
+                            <div class="bg-white p-4 rounded-lg">
+                                <p class="font-medium text-gray-800 mb-2">Quelle est la température d'auto-inflammation
+                                    du papier ?</p>
+                                <div class="grid grid-cols-2 gap-2 mt-2">
+                                    <button class="quiz-option p-2 bg-gray-100 rounded text-sm hover:bg-gray-200"
+                                        onclick="checkQuizAnswer(this, 'B')">A. 180°C</button>
+                                    <button class="quiz-option p-2 bg-gray-100 rounded text-sm hover:bg-gray-200"
+                                        onclick="checkQuizAnswer(this, 'B')">B. 230°C</button>
+                                    <button class="quiz-option p-2 bg-gray-100 rounded text-sm hover:bg-gray-200"
+                                        onclick="checkQuizAnswer(this, 'B')">C. 350°C</button>
+                                    <button class="quiz-option p-2 bg-gray-100 rounded text-sm hover:bg-gray-200"
+                                        onclick="checkQuizAnswer(this, 'B')">D. 450°C</button>
+                                </div>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg">
+                                <p class="font-medium text-gray-800 mb-2">Quel élément du triangle du feu est supprimé
+                                    par l'utilisation d'une couverture anti-feu ?</p>
+                                <div class="grid grid-cols-2 gap-2 mt-2">
+                                    <button class="quiz-option p-2 bg-gray-100 rounded text-sm hover:bg-gray-200"
+                                        onclick="checkQuizAnswer(this, 'B')">A. Le Combustible</button>
+                                    <button class="quiz-option p-2 bg-gray-100 rounded text-sm hover:bg-gray-200"
+                                        onclick="checkQuizAnswer(this, 'B')">B. Le Comburant</button>
+                                    <button class="quiz-option p-2 bg-gray-100 rounded text-sm hover:bg-gray-200"
+                                        onclick="checkQuizAnswer(this, 'B')">C. L'Énergie</button>
+                                    <button class="quiz-option p-2 bg-gray-100 rounded text-sm hover:bg-gray-200"
+                                        onclick="checkQuizAnswer(this, 'B')">D. Aucun</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== EXTINGUISHERS VIEW (from maquette) ===== -->
+            <div id="view-extinguishers" class="hidden space-y-8 tab-transition">
+                <div class="bg-white rounded-xl shadow-sm border border-stone-100 p-6">
+                    <h2 class="text-2xl font-semibold text-slate-700 mb-4">Guide des Extincteurs - Choisir le Bon Agent
+                        Extincteur</h2>
+                    <p class="text-stone-600 mb-6">
+                        L'efficacité de la lutte contre le feu dépend de l'identification correcte de la "Classe de
+                        Feu".
+                        Utiliser le mauvais agent extincteur peut être inefficace, voire dangereux (ex: eau sur feu
+                        électrique).
+                        Ce guide interactif vous aide à choisir l'extincteur approprié selon le type de combustible.
+                    </p>
+
+                    <!-- Main Matrix Tool -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+                        <!-- Left Col: Fire Classes Selector -->
+                        <div class="lg:col-span-4 space-y-3">
+                            <h3 class="text-sm font-bold text-gray-500 uppercase mb-4 tracking-wider">1. Identifiez le
+                                combustible</h3>
+
+                            <button onclick="selectFireClass('A')" id="btn-class-A"
+                                class="fire-class-btn w-full text-left p-4 rounded-xl border-2 border-gray-200 hover:border-red-500 bg-white transition-all flex items-center group extinguisher-btn">
+                                <span
+                                    class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-lg text-xl mr-4 group-hover:bg-red-50">🪵</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">Classe A</h4>
+                                    <p class="text-xs text-gray-500">Solides (Bois, Papier, Carton)</p>
+                                </div>
+                            </button>
+
+                            <button onclick="selectFireClass('B')" id="btn-class-B"
+                                class="fire-class-btn w-full text-left p-4 rounded-xl border-2 border-gray-200 hover:border-red-500 bg-white transition-all flex items-center group extinguisher-btn">
+                                <span
+                                    class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-lg text-xl mr-4 group-hover:bg-red-50">⛽</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">Classe B</h4>
+                                    <p class="text-xs text-gray-500">Liquides (Essence, Huile, Alcool)</p>
+                                </div>
+                            </button>
+
+                            <button onclick="selectFireClass('C')" id="btn-class-C"
+                                class="fire-class-btn w-full text-left p-4 rounded-xl border-2 border-gray-200 hover:border-red-500 bg-white transition-all flex items-center group extinguisher-btn">
+                                <span
+                                    class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-lg text-xl mr-4 group-hover:bg-red-50">💨</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">Classe C</h4>
+                                    <p class="text-xs text-gray-500">Gaz (Propane, Butane, Méthane)</p>
+                                </div>
+                            </button>
+
+                            <button onclick="selectFireClass('D')" id="btn-class-D"
+                                class="fire-class-btn w-full text-left p-4 rounded-xl border-2 border-gray-200 hover:border-red-500 bg-white transition-all flex items-center group extinguisher-btn">
+                                <span
+                                    class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-lg text-xl mr-4 group-hover:bg-red-50">⚙️</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">Classe D</h4>
+                                    <p class="text-xs text-gray-500">Métaux (Aluminium, Magnésium)</p>
+                                </div>
+                            </button>
+
+                            <button onclick="selectFireClass('F')" id="btn-class-F"
+                                class="fire-class-btn w-full text-left p-4 rounded-xl border-2 border-gray-200 hover:border-red-500 bg-white transition-all flex items-center group extinguisher-btn">
+                                <span
+                                    class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-lg text-xl mr-4 group-hover:bg-red-50">🍳</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">Classe F</h4>
+                                    <p class="text-xs text-gray-500">Auxiliaires de Cuisson (Graisses)</p>
+                                </div>
+                            </button>
+                        </div>
+
+                        <!-- Right Col: Result Display -->
+                        <div class="lg:col-span-8">
+                            <div
+                                class="bg-gray-900 text-white rounded-xl p-8 h-full flex flex-col justify-center relative overflow-hidden">
+                                <!-- Background Decor -->
+                                <div class="absolute top-0 right-0 p-10 opacity-5 text-9xl pointer-events-none">🧯</div>
+
+                                <div id="extinguisher-result-placeholder" class="text-center">
+                                    <span class="text-4xl mb-4 block">👈</span>
+                                    <h3 class="text-2xl font-bold text-gray-300">Sélectionnez une classe à gauche</h3>
+                                    <p class="text-gray-500 mt-2">Le guide vous indiquera l'extincteur approprié.</p>
+                                </div>
+
+                                <div id="extinguisher-result-content" class="hidden slide-in">
+                                    <div class="flex items-center mb-6">
+                                        <span id="result-icon" class="text-4xl mr-4"></span>
+                                        <div>
+                                            <h3 id="result-title" class="text-3xl font-bold text-white"></h3>
+                                            <span id="result-subtitle"
+                                                class="text-red-400 font-mono font-bold uppercase tracking-widest"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                                        <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+                                            <h4 class="text-green-400 font-bold mb-2">✅ Extincteurs Recommandés</h4>
+                                            <ul id="result-recommended"
+                                                class="space-y-2 text-sm text-gray-300 list-disc pl-4"></ul>
+                                        </div>
+                                        <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+                                            <h4 class="text-red-400 font-bold mb-2">⚠️ Attention</h4>
+                                            <p id="result-warning" class="text-sm text-gray-300 leading-relaxed"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- How to Use Section -->
+                    <div class="mt-8 bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Méthode d'Utilisation des Extincteurs
+                            (P.A.S.S.)</h3>
+                        <div class="flex flex-wrap justify-between text-center">
+                            <div class="w-full md:w-1/4 p-4">
+                                <div
+                                    class="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-xl">
+                                    P</div>
+                                <h4 class="font-bold">Percuter</h4>
+                                <p class="text-sm text-gray-500">Appuyer sur la poignée ou taper le percuteur (selon
+                                    modèle).</p>
+                            </div>
+                            <div class="w-full md:w-1/4 p-4">
+                                <div
+                                    class="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-xl">
+                                    A</div>
+                                <h4 class="font-bold">Arroser</h4>
+                                <p class="text-sm text-gray-500">Appuyer sur la gâchette et balayer de gauche à droite.
+                                </p>
+                            </div>
+                            <div class="w-full md:w-1/4 p-4">
+                                <div
+                                    class="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-xl">
+                                    S</div>
+                                <h4 class="font-bold">S'approcher</h4>
+                                <p class="text-sm text-gray-500">S'approcher à 3-5 mètres du feu (jamais à moins de 2
+                                    m).</p>
+                            </div>
+                            <div class="w-full md:w-1/4 p-4">
+                                <div
+                                    class="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-xl">
+                                    S</div>
+                                <h4 class="font-bold">Serrer</h4>
+                                <p class="text-sm text-gray-500">Serrer la gâchette et viser la base des flammes.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Normes et Maintenance -->
+                    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-blue-50 p-5 rounded-xl border border-blue-200">
+                            <h4 class="font-bold text-blue-800 mb-3">📋 Contrôles Obligatoires des Extincteurs</h4>
+                            <ul class="space-y-3 text-sm text-blue-700">
+                                <li class="flex items-start">
+                                    <i class="fas fa-calendar-check text-blue-600 mr-2 mt-1"></i>
+                                    <span><strong>Vérification mensuelle :</strong> Accès dégagé, présence, état
+                                        général</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-calendar-alt text-blue-600 mr-2 mt-1"></i>
+                                    <span><strong>Contrôle annuel :</strong> Par un organisme agréé, pression,
+                                        poids</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-tools text-blue-600 mr-2 mt-1"></i>
+                                    <span><strong>Recharge tous les 10 ans :</strong> Obligatoire même si non
+                                        utilisé</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-file-alt text-blue-600 mr-2 mt-1"></i>
+                                    <span><strong>Consignation :</strong> Registre de sécurité à jour avec les
+                                        interventions</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-amber-50 p-5 rounded-xl border border-amber-200">
+                            <h4 class="font-bold text-amber-800 mb-3">⚠️ Erreurs Fréquentes à Éviter</h4>
+                            <ul class="space-y-3 text-sm text-amber-700">
+                                <li class="flex items-start">
+                                    <i class="fas fa-ban text-amber-600 mr-2 mt-1"></i>
+                                    <span>Utiliser de l'eau sur un feu électrique sous tension</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-ban text-amber-600 mr-2 mt-1"></i>
+                                    <span>Viser le sommet des flammes au lieu de la base</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-ban text-amber-600 mr-2 mt-1"></i>
+                                    <span>Tourner le dos au feu lors de la retraite</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-ban text-amber-600 mr-2 mt-1"></i>
+                                    <span>Oublier d'appeler les secours (18/112) avant d'intervenir</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== EVACUATION VIEW (enhanced with dual display) ===== -->
             <div id="view-evacuation" class="hidden space-y-8 tab-transition">
                 <div class="bg-white rounded-xl shadow-sm border border-stone-100 p-6">
-                    <h2 class="text-2xl font-semibold text-slate-700 mb-2">Dégagements & Unités de Passage - Articles CO</h2>
+                    <h2 class="text-2xl font-semibold text-slate-700 mb-2">Équipe d'Évacuation - Rôles Réglementaires GN
+                        12</h2>
                     <p class="text-stone-600 mb-6">
-                        Le dimensionnement des sorties se fait en <strong>Unités de Passage (UP)</strong>. 
-                        1 UP = 0,60 m. Attention, 1 UP seule nécessite 0,90 m de large. 2 UP = 1,40 m.
-                        Ces règles sont définies par les articles CO 37 à CO 42 de l'Arrêté du 25 juin 1980.
+                        Selon l'article <strong>GN 12 de l'Arrêté du 25 juin 1980</strong>, chaque établissement doit
+                        désigner
+                        une équipe d'évacuation composée d'un <strong>Guide de file</strong> et d'un
+                        <strong>Serre-file</strong>.
+                        Ces rôles doivent être formés, désignés par écrit, et exercés lors de chaque évacuation.
                     </p>
-                    
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                        <!-- Controls -->
-                        <div class="lg:col-span-1 space-y-6">
-                            <div class="bg-gray-50 p-5 rounded-lg">
-                                <h4 class="font-bold text-gray-700 mb-4">Simulateur de Dimensionnement</h4>
-                                <div class="mb-4">
-                                    <label class="block text-sm font-bold text-gray-700 mb-2">Affluence à évacuer : <span id="evacValue" class="text-success text-lg">500</span> pers.</label>
-                                    <input type="range" id="evacSlider" min="0" max="2000" step="50" value="500" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-success" oninput="updateEvacuation(this.value)">
-                                    <div class="flex justify-between text-xs text-gray-500 mt-1">
-                                        <span>0 pers.</span>
-                                        <span>1000 pers.</span>
-                                        <span>2000 pers.</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div class="bg-white p-3 rounded border border-gray-200 text-center">
-                                        <span class="block text-2xl font-bold text-gray-900" id="upResult">6</span>
-                                        <span class="text-xs text-gray-500 uppercase">Unités de Passage</span>
-                                    </div>
-                                    <div class="bg-white p-3 rounded border border-gray-200 text-center">
-                                        <span class="block text-2xl font-bold text-gray-900" id="widthResult">3.60m</span>
-                                        <span class="text-xs text-gray-500 uppercase">Largeur Cumulée</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="mt-4">
-                                    <h5 class="font-bold text-gray-700 text-sm mb-2">Nombre d'issues minimum :</h5>
-                                    <p class="text-lg font-bold text-accent" id="exitsResult">2 issues</p>
-                                    <p class="text-xs text-gray-500">Selon l'article CO 38</p>
-                                </div>
-                            </div>
-                            
-                            <div class="bg-orange-50 p-4 rounded border-l-4 border-warning">
-                                <h5 class="font-bold text-orange-800 text-sm mb-2">🚨 Règle d'Or pour le Régisseur :</h5>
-                                <p class="text-sm text-orange-900">
-                                    Les dégagements doivent rester libres de tout obstacle en permanence. 
-                                    Les portes doivent s'ouvrir dans le sens de la sortie. 
-                                    Vérifier quotidiennement avant ouverture.
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <!-- Chart -->
-                        <div class="lg:col-span-2">
-                            <h4 class="text-sm font-semibold text-gray-500 mb-4 uppercase">Relation entre Effectif et Largeur des Dégagements</h4>
-                            <div class="chart-container">
-                                <canvas id="evacChart"></canvas>
-                            </div>
-                            <div class="mt-4 text-sm text-gray-600">
-                                <p><strong>Explication :</strong> La largeur requise augmente par paliers (fonction en escalier). 
-                                Chaque palier correspond à un nombre entier d'Unités de Passage.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Rules Grid -->
-                    <div class="mt-8">
-                        <h3 class="text-lg font-semibold text-slate-700 mb-4">Règles Essentielles d'Évacuation</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div class="bg-gray-900 text-white p-5 rounded-lg">
-                                <h4 class="font-bold text-lg mb-3 flex items-center">
-                                    <i class="fas fa-star text-accent mr-2"></i>
-                                    Règles d'Or
-                                </h4>
-                                <ul class="space-y-3 text-sm">
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check text-accent mr-2 mt-1"></i>
-                                        <span>Portes s'ouvrent dans le sens de la sortie (CO 41)</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check text-accent mr-2 mt-1"></i>
-                                        <span>Dégagements libres d'obstacles en permanence</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check text-accent mr-2 mt-1"></i>
-                                        <span>Balisage lumineux obligatoire (BAES - EC 7)</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check text-accent mr-2 mt-1"></i>
-                                        <span>Signalisations conformes (pictogrammes blanc sur fond vert)</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                            <div class="bg-gray-50 p-5 rounded-lg">
-                                <h4 class="font-bold text-lg mb-3">Largeurs Standards</h4>
-                                <div class="grid grid-cols-2 gap-3 text-center">
-                                    <div class="p-3 bg-white rounded border border-gray-300">
-                                        <span class="block font-bold text-lg">1 UP</span>
-                                        <span class="text-sm text-gray-600">0.90 m (minimum)</span>
-                                    </div>
-                                    <div class="p-3 bg-white rounded border border-gray-300">
-                                        <span class="block font-bold text-lg">2 UP</span>
-                                        <span class="text-sm text-gray-600">1.40 m</span>
-                                    </div>
-                                    <div class="p-3 bg-white rounded border border-gray-300">
-                                        <span class="block font-bold text-lg">3 UP</span>
-                                        <span class="text-sm text-gray-600">1.80 m</span>
-                                    </div>
-                                    <div class="p-3 bg-white rounded border border-gray-300">
-                                        <span class="block font-bold text-lg">N UP</span>
-                                        <span class="text-sm text-gray-600">N × 0.60 m</span>
-                                    </div>
-                                </div>
-                                <p class="text-xs text-gray-500 mt-3 italic">
-                                    Pour N ≥ 2. 1 UP seule a une largeur spéciale de 0.90m.
-                                </p>
-                            </div>
-                            
-                            <div class="bg-gray-50 p-5 rounded-lg">
-                                <h4 class="font-bold text-lg mb-3">Seuils Critiques</h4>
-                                <ul class="space-y-3 text-sm text-gray-700">
-                                    <li class="p-2 bg-white rounded border-l-4 border-green-500">
-                                        <strong>&lt; 20 pers</strong> : 1 sortie (0.90m) suffisante
-                                    </li>
-                                    <li class="p-2 bg-white rounded border-l-4 border-yellow-500">
-                                        <strong>20-500 pers</strong> : 2 sorties minimum obligatoires
-                                    </li>
-                                    <li class="p-2 bg-white rounded border-l-4 border-orange-500">
-                                        <strong>501-1000 pers</strong> : 2 sorties minimum
-                                    </li>
-                                    <li class="p-2 bg-white rounded border-l-4 border-red-500">
-                                        <strong>&gt; 1000 pers</strong> : +1 sortie par 500 personnes supplémentaires
-                                    </li>
-                                </ul>
-                                <p class="text-xs text-gray-500 mt-3">
-                                    Source : Article CO 38 - Répartition des sorties
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Conseils Pratiques -->
-                    <div class="mt-8 bg-blue-50 p-5 rounded-xl border border-blue-200">
-                        <h4 class="font-bold text-blue-800 mb-3">🛠️ Conseils Pratiques pour le Régisseur</h4>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <h5 class="font-bold text-blue-700 text-sm mb-2">Avant Ouverture</h5>
-                                <ul class="text-sm text-blue-700 space-y-1">
-                                    <li>• Vérifier l'ouverture complète de toutes les issues</li>
-                                    <li>• Tester les dispositifs de déverrouillage (panic bars)</li>
-                                    <li>• Contrôler l'éclairage de sécurité (BAES)</li>
-                                    <li>• S'assurer de l'absence d'obstacles dans les circulations</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-blue-700 text-sm mb-2">Pendant l'Exploitation</h5>
-                                <ul class="text-sm text-blue-700 space-y-1">
-                                    <li>• Maintenir les issues accessibles (pas de stockage)</li>
-                                    <li>• Surveiller les files d'attente devant les sorties</li>
-                                    <li>• Former le personnel à l'évacuation</li>
-                                    <li>• Afficher les plans d'évacuation à chaque entrée</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ===== CTS VIEW ===== -->
-            <div id="view-cts" class="hidden space-y-8 tab-transition">
-                <div class="bg-white rounded-xl shadow-sm border border-stone-100 p-6">
-                    <h2 class="text-2xl font-semibold text-slate-700 mb-2">Sécurité Chapiteaux (CTS) & Météo - Arrêté du 23 janvier 1985</h2>
-                    <p class="text-stone-600 mb-6">
-                        L'exploitation d'un chapiteau est soumise à l'Arrêté du 23 janvier 1985 spécifique aux CTS (Chapiteaux, Tentes et Structures). 
-                        Deux facteurs critiques : la solidité au vent et la réaction au feu. L'exploitant doit tenir un registre de sécurité et surveiller la météo en temps réel.
-                    </p>
-                    
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <!-- Wind Calculator -->
-                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
-                            <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
-                                <i class="fas fa-wind mr-2"></i> Simulateur de Décision Météo
-                            </h3>
-                            <p class="text-sm text-gray-600 mb-4">
-                                Selon l'article CTS 16, l'exploitant doit surveiller les conditions météorologiques et prendre les mesures appropriées.
+
+                    <!-- Note Réglementaire -->
+                    <div class="mb-8 bg-blue-50 p-4 rounded-lg border border-blue-200">
+                        <div class="flex items-start">
+                            <i class="fas fa-gavel text-blue-600 mr-2 mt-0.5"></i>
+                            <p class="text-sm text-blue-700">
+                                <strong>Article GN 12 :</strong> "Le personnel doit être instruit de son rôle éventuel
+                                dans l'évacuation du public.
+                                <strong>Les personnes chargées de guider le public</strong> et <strong>celles chargées
+                                    de fermer la marche</strong>
+                                doivent être spécialement désignées."
                             </p>
-                            <div class="space-y-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Vitesse max homologuée du chapiteau</label>
-                                    <select id="maxWindInput" class="w-full rounded-md border-gray-300 shadow-sm p-2 border bg-white" onchange="updateWindSimulator()">
-                                        <option value="85">85 km/h (Structures légères ou anciennes)</option>
-                                        <option value="100" selected>100 km/h (Standard - conforme à l'Arrêté 1985)</option>
-                                        <option value="120">120 km/h (Renforcé - structures récentes)</option>
-                                    </select>
-                                    <p class="text-xs text-gray-500 mt-1">Vérifier sur le registre de sécurité du chapiteau</p>
+                        </div>
+                    </div>
+
+                    <!-- Affichage Côte à Côte des Deux Rôles -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+                        <!-- Guide de File -->
+                        <div class="bg-white rounded-2xl shadow-lg border border-orange-200 overflow-hidden">
+                            <div class="bg-orange-600 p-6 text-white text-center">
+                                <h3 class="text-2xl font-bold">🧭 Guide de file</h3>
+                                <p class="opacity-90 mt-1">Personnel chargé de guider le public</p>
+                                <div class="mt-3 inline-flex items-center px-3 py-1 bg-orange-700 rounded-full text-xs">
+                                    <i class="fas fa-gavel mr-1"></i> Article GN 12
                                 </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Vitesse du vent actuelle (km/h)</label>
-                                    <input type="range" id="currentWindInput" min="0" max="140" value="45" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-structure" oninput="updateWindSimulator()">
-                                    <div class="flex justify-between text-xs text-gray-500 mt-1">
-                                        <span>0 km/h</span>
-                                        <span id="currentWindDisplay" class="font-bold text-structure text-base">45 km/h</span>
-                                        <span>140 km/h</span>
+                            </div>
+
+                            <div class="p-6">
+                                <div class="flex flex-col items-center mb-6">
+                                    <div
+                                        class="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center text-4xl mb-3">
+                                        🧭
                                     </div>
-                                </div>
-                                
-                                <!-- Status Indicator -->
-                                <div id="weatherStatus" class="bg-green-100 border border-green-200 p-4 rounded-lg flex items-start gap-3">
-                                    <div id="weatherIcon" class="text-2xl"><i class="fas fa-check-circle text-green-600"></i></div>
-                                    <div>
-                                        <h4 id="weatherTitle" class="font-bold text-green-800">Situation Normale</h4>
-                                        <p id="weatherDesc" class="text-sm text-green-700">Exploitation autorisée. Continuez la veille météorologique toutes les 3 heures.</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="bg-amber-50 p-3 rounded border border-amber-200">
-                                    <h5 class="font-bold text-amber-800 text-sm mb-1">📋 Procédure Réglementaire</h5>
-                                    <p class="text-xs text-amber-700">
-                                        <strong>Article CTS 16 :</strong> En cas de vent dépassant 60 km/h, renforcez la surveillance. 
-                                        Au-delà de 80% de la vitesse max, préparez l'évacuation. Au-delà du max, évacuez immédiatement.
+                                    <p class="text-center text-sm text-gray-500 font-medium">
+                                        Gilet fluorescent VERT<br>+ Lampe torche + Sifflet
                                     </p>
                                 </div>
+
+                                <h4 class="font-bold text-gray-900 mb-4 border-b pb-2">Missions Principales</h4>
+                                <ul class="space-y-3 text-gray-700">
+                                    <li class="flex items-start">
+                                        <span class="w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                        <span>Dirige les personnes vers la sortie de secours la plus proche et la plus
+                                            sûre</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                        <span>S'oppose catégoriquement à l'utilisation des ascenseurs</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                        <span>Guide le groupe jusqu'au point de rassemblement extérieur défini</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                        <span>Participe au comptage des effectifs avec le responsable
+                                            d'évacuation</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                        <span>Connaît parfaitement le plan d'évacuation et les issues de secours</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                        
-                        <!-- Wind Chart -->
-                        <div class="bg-white rounded-xl">
-                            <h3 class="text-lg font-bold text-gray-900 mb-4">Échelle de Beaufort & Risques pour CTS</h3>
-                            <div class="chart-container">
-                                <canvas id="windChart"></canvas>
+
+                        <!-- Serre-File -->
+                        <div class="bg-white rounded-2xl shadow-lg border border-red-200 overflow-hidden">
+                            <div class="bg-red-600 p-6 text-white text-center">
+                                <h3 class="text-2xl font-bold">🔍 Serre-file</h3>
+                                <p class="opacity-90 mt-1">Personnel chargé de fermer la marche</p>
+                                <div class="mt-3 inline-flex items-center px-3 py-1 bg-red-700 rounded-full text-xs">
+                                    <i class="fas fa-gavel mr-1"></i> Article GN 12
+                                </div>
                             </div>
-                            <div class="mt-4 text-sm text-gray-600">
-                                <p><strong>Niveau 3 (20-28 km/h) :</strong> Vent modéré - Vérification des ancrages recommandée</p>
-                                <p><strong>Niveau 5 (30-38 km/h) :</strong> Vent frais - Surveillance renforcée obligatoire</p>
-                                <p><strong>Niveau 7 (50-61 km/h) :</strong> Grand vent - Risque structurel, préparation évacuation</p>
+
+                            <div class="p-6">
+                                <div class="flex flex-col items-center mb-6">
+                                    <div
+                                        class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center text-4xl mb-3">
+                                        🔍
+                                    </div>
+                                    <p class="text-center text-sm text-gray-500 font-medium">
+                                        Gilet fluorescent ROUGE<br>+ Lampe torche + Liste des locaux
+                                    </p>
+                                </div>
+
+                                <h4 class="font-bold text-gray-900 mb-4 border-b pb-2">Missions Principales</h4>
+                                <ul class="space-y-3 text-gray-700">
+                                    <li class="flex items-start">
+                                        <span class="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                        <span>Visite tous les locaux de sa zone (toilettes, vestiaires, bureaux
+                                            inclus)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                        <span>S'assure de la fermeture des portes et fenêtres (sans verrouiller)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                        <span>Empêche les personnes de revenir en arrière chercher des effets
+                                            personnels</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                        <span>Rend compte de l'évacuation complète au responsable d'évacuation</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                        <span>Vérifie que personne n'est resté dans les sanitaires et locaux
+                                            annexes</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Checklist -->
-                    <div class="mt-8">
-                        <h3 class="text-lg font-bold text-gray-900 mb-4">Points de Contrôle Obligatoires pour CTS</h3>
-                        <p class="text-sm text-gray-600 mb-4">
-                            Checklist basée sur l'Arrêté du 23 janvier 1985 et les bonnes pratiques professionnelles.
+
+                    <!-- Tableau Comparatif -->
+                    <div class="mb-10">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Tableau Comparatif des Rôles</h3>
+                        <div class="overflow-hidden border border-gray-200 rounded-lg">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                                            Aspect</th>
+                                        <th
+                                            class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase bg-orange-50">
+                                            Guide de file</th>
+                                        <th
+                                            class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase bg-red-50">
+                                            Serre-file</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="px-4 py-3 font-medium text-gray-900">Position</td>
+                                        <td class="px-4 py-3 bg-orange-50">En tête du groupe</td>
+                                        <td class="px-4 py-3 bg-red-50">À l'arrière du groupe</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 font-medium text-gray-900">Signalétique</td>
+                                        <td class="px-4 py-3 bg-orange-50">Gilet VERT</td>
+                                        <td class="px-4 py-3 bg-red-50">Gilet ROUGE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 font-medium text-gray-900">Focus</td>
+                                        <td class="px-4 py-3 bg-orange-50">Cheminement vers la sortie</td>
+                                        <td class="px-4 py-3 bg-red-50">Vérification des locaux</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 font-medium text-gray-900">Tâche principale</td>
+                                        <td class="px-4 py-3 bg-orange-50">Montrer le chemin</td>
+                                        <td class="px-4 py-3 bg-red-50">Vérifier les arrières</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- General Process Flow -->
+                    <div class="mt-12">
+                        <h3 class="text-lg font-bold text-gray-900 mb-6">Procédure d'Évacuation Type</h3>
+                        <div class="relative">
+                            <!-- Connecting Line -->
+                            <div
+                                class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-200 -z-10 transform -translate-y-1/2">
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
+                                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                                    <div
+                                        class="w-10 h-10 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-2 text-xl">
+                                        🚨</div>
+                                    <h4 class="font-bold text-sm">1. Alarme</h4>
+                                    <p class="text-xs text-gray-500">Arrêt immédiat du travail. Écouter les consignes.
+                                    </p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                                    <div
+                                        class="w-10 h-10 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mx-auto mb-2 text-xl">
+                                        🚪</div>
+                                    <h4 class="font-bold text-sm">2. Cheminement</h4>
+                                    <p class="text-xs text-gray-500">Suivre le balisage vert. Ne pas utiliser
+                                        l'ascenseur.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                                    <div
+                                        class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-2 text-xl">
+                                        📍</div>
+                                    <h4 class="font-bold text-sm">3. Point de Rassemblement</h4>
+                                    <p class="text-xs text-gray-500">Rejoindre la zone extérieure définie.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                                    <div
+                                        class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-2 text-xl">
+                                        📝</div>
+                                    <h4 class="font-bold text-sm">4. Comptage</h4>
+                                    <p class="text-xs text-gray-500">Se signaler au responsable pour l'appel.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            <!-- Dégagements & Unités de Passage -->
+            
+            <div class="mt-12">
+                <h3 class="text-2xl font-semibold text-slate-700 mb-4">Dégagements & Unités de Passage -
+                    Articles CO</h3>
+                <p class="text-stone-600 mb-6">
+                    Le dimensionnement des sorties se fait en <strong>Unités de Passage (UP)</strong>.
+                    1 UP = 0,60 m. Attention, 1 UP seule nécessite 0,90 m de large. 2 UP = 1,40 m.
+                    Ces règles sont définies par les articles CO 37 à CO 42 de l'Arrêté du 25 juin 1980.
+                </p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Controls -->
+                    <div class="lg:col-span-1 space-y-6">
+                        <div class="bg-gray-50 p-5 rounded-lg">
+                            <h4 class="font-bold text-gray-700 mb-4">Simulateur de Dimensionnement</h4>
+                            <div class="mb-4">
+                                <label class="block text-sm font-bold text-gray-700 mb-2">Affluence à évacuer :
+                                    <span id="evacValue" class="text-success text-lg">500</span> pers.</label>
+                                <input type="range" id="evacSlider" min="0" max="2000" step="50" value="500"
+                                    class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-success"
+                                    oninput="updateEvacuation(this.value)">
+                                <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                    <span>0 pers.</span>
+                                    <span>1000 pers.</span>
+                                    <span>2000 pers.</span>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-white p-3 rounded border border-gray-200 text-center">
+                                    <span class="block text-2xl font-bold text-gray-900" id="upResult">6</span>
+                                    <span class="text-xs text-gray-500 uppercase">Unités de Passage</span>
+                                </div>
+                                <div class="bg-white p-3 rounded border border-gray-200 text-center">
+                                    <span class="block text-2xl font-bold text-gray-900" id="widthResult">3.60m</span>
+                                    <span class="text-xs text-gray-500 uppercase">Largeur Cumulée</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <h5 class="font-bold text-gray-700 text-sm mb-2">Nombre d'issues minimum :</h5>
+                                <p class="text-lg font-bold text-accent" id="exitsResult">2 issues</p>
+                                <p class="text-xs text-gray-500">Selon l'article CO 38</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-orange-50 p-4 rounded border-l-4 border-warning">
+                            <h5 class="font-bold text-orange-800 text-sm mb-2">🚨 Règle d'Or pour l'Évacuation :
+                            </h5>
+                            <p class="text-sm text-orange-900">
+                                Les dégagements doivent rester libres de tout obstacle en permanence.
+                                Les portes doivent s'ouvrir dans le sens de la sortie.
+                                Vérifier quotidiennement avant ouverture.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Chart -->
+                    <div class="lg:col-span-2">
+                        <h4 class="text-sm font-semibold text-gray-500 mb-4 uppercase">Relation entre Effectif
+                            et Largeur des Dégagements</h4>
+                        <div class="chart-container">
+                            <canvas id="evacChart"></canvas>
+                        </div>
+                        <div class="mt-4 text-sm text-gray-600">
+                            <p><strong>Explication pédagogique :</strong> La largeur requise augmente par
+                                paliers (fonction en escalier).
+                                Chaque palier correspond à un nombre entier d'Unités de Passage. Ce graphique
+                                aide les stagiaires à visualiser la relation non-linéaire.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rules Grid -->
+            <div class="mt-8">
+                <h3 class="text-lg font-semibold text-slate-700 mb-4">Règles Essentielles d'Évacuation</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gray-900 text-white p-5 rounded-lg">
+                        <h4 class="font-bold text-lg mb-3 flex items-center">
+                            <i class="fas fa-star text-accent mr-2"></i>
+                            Règles d'Or
+                        </h4>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-accent mr-2 mt-1"></i>
+                                <span>Portes s'ouvrent dans le sens de la sortie (CO 41)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-accent mr-2 mt-1"></i>
+                                <span>Dégagements libres d'obstacles en permanence</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-accent mr-2 mt-1"></i>
+                                <span>Balisage lumineux obligatoire (BAES - EC 7)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-accent mr-2 mt-1"></i>
+                                <span>Signalisations conformes (pictogrammes blanc sur fond vert)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-50 p-5 rounded-lg">
+                        <h4 class="font-bold text-lg mb-3">Largeurs Standards</h4>
+                        <div class="grid grid-cols-2 gap-3 text-center">
+                            <div class="p-3 bg-white rounded border border-gray-300">
+                                <span class="block font-bold text-lg">1 UP</span>
+                                <span class="text-sm text-gray-600">0.90 m (minimum)</span>
+                            </div>
+                            <div class="p-3 bg-white rounded border border-gray-300">
+                                <span class="block font-bold text-lg">2 UP</span>
+                                <span class="text-sm text-gray-600">1.40 m</span>
+                            </div>
+                            <div class="p-3 bg-white rounded border border-gray-300">
+                                <span class="block font-bold text-lg">3 UP</span>
+                                <span class="text-sm text-gray-600">1.80 m</span>
+                            </div>
+                            <div class="p-3 bg-white rounded border border-gray-300">
+                                <span class="block font-bold text-lg">N UP</span>
+                                <span class="text-sm text-gray-600">N × 0.60 m</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-3 italic">
+                            Pour N ≥ 2. 1 UP seule a une largeur spéciale de 0.90m.
                         </p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="flex items-start p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <input type="checkbox" class="mt-1 mr-3 h-5 w-5 text-accent rounded border-gray-300 accent-accent">
-                                <div>
-                                    <span class="font-medium text-gray-900">Ancrages et Haubanage (Art. CTS 10)</span>
-                                    <p class="text-xs text-gray-500 mt-1">Vérifier la tension des sangles et la tenue des pieux. Contrôle quotidien obligatoire.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <input type="checkbox" class="mt-1 mr-3 h-5 w-5 text-accent rounded border-gray-300 accent-accent">
-                                <div>
-                                    <span class="font-medium text-gray-900">Issues de Secours (Art. CTS 12)</span>
-                                    <p class="text-xs text-gray-500 mt-1">Déverrouillées, dégagées, éclairage de sécurité fonctionnel. 2 issues minimum opposées.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <input type="checkbox" class="mt-1 mr-3 h-5 w-5 text-accent rounded border-gray-300 accent-accent">
-                                <div>
-                                    <span class="font-medium text-gray-900">Extincteurs (Art. CTS 15)</span>
-                                    <p class="text-xs text-gray-500 mt-1">En place (1 pour 300m²), plombés, vérifiés annuellement. Accessibles et signalés.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <input type="checkbox" class="mt-1 mr-3 h-5 w-5 text-accent rounded border-gray-300 accent-accent">
-                                <div>
-                                    <span class="font-medium text-gray-900">Installations Électriques (Art. CTS 18)</span>
-                                    <p class="text-xs text-gray-500 mt-1">Coffrets fermés, câbles protégés, dispositifs différentiels 30mA. Vérification Q18.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <input type="checkbox" class="mt-1 mr-3 h-5 w-5 text-accent rounded border-gray-300 accent-accent">
-                                <div>
-                                    <span class="font-medium text-gray-900">Classement au Feu (Art. CTS 8)</span>
-                                    <p class="text-xs text-gray-500 mt-1">Toile M1 obligatoire. Certificat de réaction au feu présent dans le registre.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <input type="checkbox" class="mt-1 mr-3 h-5 w-5 text-accent rounded border-gray-300 accent-accent">
-                                <div>
-                                    <span class="font-medium text-gray-900">Registre de Sécurité (Art. CTS 21)</span>
-                                    <p class="text-xs text-gray-500 mt-1">Complet et à jour. Doit contenir les rapports de contrôle, PV d'essais, notices.</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    
-                    <!-- Documentation Requise -->
-                    <div class="mt-8 bg-blue-50 p-5 rounded-xl border border-blue-200">
-                        <h4 class="font-bold text-blue-800 mb-3">📄 Documents Obligatoires à Présenter en Commission</h4>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div class="bg-white p-3 rounded border border-blue-100">
-                                <h5 class="font-bold text-blue-700 text-sm mb-1">1. Registre de Sécurité</h5>
-                                <p class="text-xs text-gray-600">Extrait du registre du chapiteau avec les derniers contrôles.</p>
-                            </div>
-                            <div class="bg-white p-3 rounded border border-blue-100">
-                                <h5 class="font-bold text-blue-700 text-sm mb-1">2. Rapport de Montage</h5>
-                                <p class="text-xs text-gray-600">Certificat de bon montage signé par l'entreprise.</p>
-                            </div>
-                            <div class="bg-white p-3 rounded border border-blue-100">
-                                <h5 class="font-bold text-blue-700 text-sm mb-1">3. Contrôles Techniques</h5>
-                                <p class="text-xs text-gray-600">Q18 (électricité), contrôle extincteurs, résistance au vent.</p>
-                            </div>
-                        </div>
-                        <p class="text-sm text-blue-700 mt-3">
-                            <strong>Conseil :</strong> Préparez ces documents en triple exemplaire pour la commission (1 pour vous, 1 pour les pompiers, 1 pour la mairie).
+
+                    <div class="bg-gray-50 p-5 rounded-lg">
+                        <h4 class="font-bold text-lg mb-3">Seuils Critiques</h4>
+                        <ul class="space-y-3 text-sm text-gray-700">
+                            <li class="p-2 bg-white rounded border-l-4 border-green-500">
+                                <strong>&lt; 20 pers</strong> : 1 sortie (0.90m) suffisante
+                            </li>
+                            <li class="p-2 bg-white rounded border-l-4 border-yellow-500">
+                                <strong>20-500 pers</strong> : 2 sorties minimum obligatoires
+                            </li>
+                            <li class="p-2 bg-white rounded border-l-4 border-orange-500">
+                                <strong>501-1000 pers</strong> : 2 sorties minimum
+                            </li>
+                            <li class="p-2 bg-white rounded border-l-4 border-red-500">
+                                <strong>&gt; 1000 pers</strong> : +1 sortie par 500 personnes supplémentaires
+                            </li>
+                        </ul>
+                        <p class="text-xs text-gray-500 mt-3">
+                            Source : Article CO 38 - Répartition des sorties
                         </p>
                     </div>
                 </div>
             </div>
-            
-            <!-- ===== LIBRARY VIEW ===== -->
-            <div id="view-library" class="hidden space-y-8 tab-transition">
-                <div class="bg-white rounded-xl shadow-sm border border-stone-100 p-6">
-                    <h2 class="text-2xl font-semibold text-slate-700 mb-4">Bibliothèque Officielle Légifrance</h2>
-                    <p class="text-stone-600 mb-6">
-                        Accès direct aux textes consolidés de la réglementation sécurité incendie. 
-                        Utilisez le filtre pour trouver un texte spécifique. Tous les liens pointent vers les versions officielles sur Légifrance.
-                    </p>
-                    
-                    <!-- Search -->
-                    <div class="mb-6 relative">
-                        <input type="text" id="linkSearch" placeholder="Filtrer les textes (ex: Sécurité, CTS, Électricité, Dégagements...)" 
-                               class="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:border-accent transition-shadow">
-                        <i class="fas fa-search absolute left-3 top-3.5 text-gray-400"></i>
+
+            <!-- Conseils Pratiques -->
+            <div class="mt-8 bg-blue-50 p-5 rounded-xl border border-blue-200">
+                <h4 class="font-bold text-blue-800 mb-3">🛠️ Conseils Pratiques pour le Régisseur</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <h5 class="font-bold text-blue-700 text-sm mb-2">Avant Ouverture</h5>
+                        <ul class="text-sm text-blue-700 space-y-1">
+                            <li>• Vérifier l'ouverture complète de toutes les issues</li>
+                            <li>• Tester les dispositifs de déverrouillage (panic bars)</li>
+                            <li>• Contrôler l'éclairage de sécurité (BAES)</li>
+                            <li>• S'assurer de l'absence d'obstacles dans les circulations</li>
+                        </ul>
                     </div>
-                    
-                    <!-- Statistics -->
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-                        <div class="bg-gray-50 p-3 rounded text-center">
-                            <div class="text-2xl font-bold text-gray-900">15</div>
-                            <div class="text-xs text-gray-500">Textes référencés</div>
-                        </div>
-                        <div class="bg-gray-50 p-3 rounded text-center">
-                            <div class="text-2xl font-bold text-gray-900">6</div>
-                            <div class="text-xs text-gray-500">Thèmes principaux</div>
-                        </div>
-                        <div class="bg-gray-50 p-3 rounded text-center">
-                            <div class="text-2xl font-bold text-gray-900">2</div>
-                            <div class="text-xs text-gray-500">Arrêtés fondamentaux</div>
-                        </div>
-                        <div class="bg-gray-50 p-3 rounded text-center">
-                            <div class="text-2xl font-bold text-gray-900">1980-2024</div>
-                            <div class="text-xs text-gray-500">Période couverte</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Links Table -->
-                    <div class="overflow-hidden border border-gray-200 rounded-lg">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Thème</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Titre & Référence</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Mots Clés</th>
-                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200" id="linksTableBody">
-                                <!-- Populated by JS -->
-                            </tbody>
-                        </table>
-                        <div id="noResults" class="hidden p-8 text-center text-gray-500">
-                            <i class="fas fa-search mb-2 text-2xl"></i>
-                            <p>Aucun texte trouvé pour cette recherche.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Important Notes -->
-                    <div class="mt-6 bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-                        <h4 class="font-bold text-yellow-800 mb-2">📌 Notes importantes :</h4>
-                        <ul class="text-sm text-yellow-700 space-y-1">
-                            <li>• Les textes sont accessibles dans leur version consolidée (mises à jour incluses)</li>
-                            <li>• Pour les arrêtés techniques, vérifiez toujours les annexes et notes</li>
-                            <li>• Les circulaires d'application complètent les arrêtés mais n'ont pas force réglementaire</li>
-                            <li>• En cas de doute, contactez la commission de sécurité compétente</li>
+                    <div>
+                        <h5 class="font-bold text-blue-700 text-sm mb-2">Pendant l'Exploitation</h5>
+                        <ul class="text-sm text-blue-700 space-y-1">
+                            <li>• Maintenir les issues accessibles (pas de stockage)</li>
+                            <li>• Surveiller les files d'attente devant les sorties</li>
+                            <li>• Former le personnel à l'évacuation</li>
+                            <li>• Afficher les plans d'évacuation à chaque entrée</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            
+        </div>
+        </div>
+
+        <!-- ===== CTS VIEW ===== -->
+        <div id="view-cts" class="hidden space-y-8 tab-transition">
+            <div class="bg-white rounded-xl shadow-sm border border-stone-100 p-6">
+                <h2 class="text-2xl font-semibold text-slate-700 mb-2">Sécurité Chapiteaux (CTS) & Météo - Arrêté du
+                    23 janvier 1985</h2>
+                <p class="text-stone-600 mb-6">
+                    L'exploitation d'un chapiteau est soumise à l'Arrêté du 23 janvier 1985 spécifique aux CTS
+                    (Chapiteaux, Tentes et Structures).
+                    Deux facteurs critiques : la solidité au vent et la réaction au feu. L'exploitant doit tenir un
+                    registre de sécurité et surveiller la météo en temps réel.
+                </p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Wind Calculator -->
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                            <i class="fas fa-wind mr-2"></i> Simulateur de Décision Météo
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-4">
+                            Selon l'article CTS 16, l'exploitant doit surveiller les conditions météorologiques et
+                            prendre les mesures appropriées.
+                        </p>
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Vitesse max homologuée
+                                    du chapiteau</label>
+                                <select id="maxWindInput"
+                                    class="w-full rounded-md border-gray-300 shadow-sm p-2 border bg-white"
+                                    onchange="updateWindSimulator()">
+                                    <option value="85">85 km/h (Structures légères ou anciennes)</option>
+                                    <option value="100" selected>100 km/h (Standard - conforme à l'Arrêté 1985)
+                                    </option>
+                                    <option value="120">120 km/h (Renforcé - structures récentes)</option>
+                                </select>
+                                <p class="text-xs text-gray-500 mt-1">Vérifier sur le registre de sécurité du
+                                    chapiteau</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Vitesse du vent actuelle
+                                    (km/h)</label>
+                                <input type="range" id="currentWindInput" min="0" max="140" value="45"
+                                    class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-structure"
+                                    oninput="updateWindSimulator()">
+                                <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                    <span>0 km/h</span>
+                                    <span id="currentWindDisplay" class="font-bold text-structure text-base">45
+                                        km/h</span>
+                                    <span>140 km/h</span>
+                                </div>
+                            </div>
+
+                            <!-- Status Indicator -->
+                            <div id="weatherStatus"
+                                class="bg-green-100 border border-green-200 p-4 rounded-lg flex items-start gap-3">
+                                <div id="weatherIcon" class="text-2xl"><i
+                                        class="fas fa-check-circle text-green-600"></i></div>
+                                <div>
+                                    <h4 id="weatherTitle" class="font-bold text-green-800">Situation Normale</h4>
+                                    <p id="weatherDesc" class="text-sm text-green-700">Exploitation autorisée.
+                                        Continuez la veille météorologique toutes les 3 heures.</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-amber-50 p-3 rounded border border-amber-200">
+                                <h5 class="font-bold text-amber-800 text-sm mb-1">📋 Procédure Réglementaire</h5>
+                                <p class="text-xs text-amber-700">
+                                    <strong>Article CTS 16 :</strong> En cas de vent dépassant 60 km/h, renforcez la
+                                    surveillance.
+                                    Au-delà de 80% de la vitesse max, préparez l'évacuation. Au-delà du max, évacuez
+                                    immédiatement.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wind Chart -->
+                    <div class="bg-white rounded-xl">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Échelle de Beaufort & Risques pour CTS</h3>
+                        <div class="chart-container">
+                            <canvas id="windChart"></canvas>
+                        </div>
+                        <div class="mt-4 text-sm text-gray-600">
+                            <p><strong>Niveau 3 (20-28 km/h) :</strong> Vent modéré - Vérification des ancrages
+                                recommandée</p>
+                            <p><strong>Niveau 5 (30-38 km/h) :</strong> Vent frais - Surveillance renforcée
+                                obligatoire</p>
+                            <p><strong>Niveau 7 (50-61 km/h) :</strong> Grand vent - Risque structurel, préparation
+                                évacuation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Checklist -->
+                <div class="mt-8">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">Points de Contrôle Obligatoires pour CTS</h3>
+                    <p class="text-sm text-gray-600 mb-4">
+                        Checklist basée sur l'Arrêté du 23 janvier 1985 et les bonnes pratiques professionnelles.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex items-start p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <input type="checkbox"
+                                class="mt-1 mr-3 h-5 w-5 text-accent rounded border-gray-300 accent-accent">
+                            <div>
+                                <span class="font-medium text-gray-900">Ancrages et Haubanage (Art. CTS 10)</span>
+                                <p class="text-xs text-gray-500 mt-1">Vérifier la tension des sangles et la tenue
+                                    des pieux. Contrôle quotidien obligatoire.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <input type="checkbox"
+                                class="mt-1 mr-3 h-5 w-5 text-accent rounded border-gray-300 accent-accent">
+                            <div>
+                                <span class="font-medium text-gray-900">Issues de Secours (Art. CTS 12)</span>
+                                <p class="text-xs text-gray-500 mt-1">Déverrouillées, dégagées, éclairage de
+                                    sécurité fonctionnel. 2 issues minimum opposées.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <input type="checkbox"
+                                class="mt-1 mr-3 h-5 w-5 text-accent rounded border-gray-300 accent-accent">
+                            <div>
+                                <span class="font-medium text-gray-900">Extincteurs (Art. CTS 15)</span>
+                                <p class="text-xs text-gray-500 mt-1">En place (1 pour 300m²), plombés, vérifiés
+                                    annuellement. Accessibles et signalés.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <input type="checkbox"
+                                class="mt-1 mr-3 h-5 w-5 text-accent rounded border-gray-300 accent-accent">
+                            <div>
+                                <span class="font-medium text-gray-900">Installations Électriques (Art. CTS
+                                    18)</span>
+                                <p class="text-xs text-gray-500 mt-1">Coffrets fermés, câbles protégés, dispositifs
+                                    différentiels 30mA. Vérification Q18.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <input type="checkbox"
+                                class="mt-1 mr-3 h-5 w-5 text-accent rounded border-gray-300 accent-accent">
+                            <div>
+                                <span class="font-medium text-gray-900">Classement au Feu (Art. CTS 8)</span>
+                                <p class="text-xs text-gray-500 mt-1">Toile M1 obligatoire. Certificat de réaction
+                                    au feu présent dans le registre.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <input type="checkbox"
+                                class="mt-1 mr-3 h-5 w-5 text-accent rounded border-gray-300 accent-accent">
+                            <div>
+                                <span class="font-medium text-gray-900">Registre de Sécurité (Art. CTS 21)</span>
+                                <p class="text-xs text-gray-500 mt-1">Complet et à jour. Doit contenir les rapports
+                                    de contrôle, PV d'essais, notices.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documentation Requise -->
+                <div class="mt-8 bg-blue-50 p-5 rounded-xl border border-blue-200">
+                    <h4 class="font-bold text-blue-800 mb-3">📄 Documents Obligatoires à Présenter en Commission
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white p-3 rounded border border-blue-100">
+                            <h5 class="font-bold text-blue-700 text-sm mb-1">1. Registre de Sécurité</h5>
+                            <p class="text-xs text-gray-600">Extrait du registre du chapiteau avec les derniers
+                                contrôles.</p>
+                        </div>
+                        <div class="bg-white p-3 rounded border border-blue-100">
+                            <h5 class="font-bold text-blue-700 text-sm mb-1">2. Rapport de Montage</h5>
+                            <p class="text-xs text-gray-600">Certificat de bon montage signé par l'entreprise.</p>
+                        </div>
+                        <div class="bg-white p-3 rounded border border-blue-100">
+                            <h5 class="font-bold text-blue-700 text-sm mb-1">3. Contrôles Techniques</h5>
+                            <p class="text-xs text-gray-600">Q18 (électricité), contrôle extincteurs, résistance au
+                                vent.</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-blue-700 mt-3">
+                        <strong>Conseil pédagogique :</strong> En formation, faites réaliser aux stagiaires un
+                        dossier type avec ces documents fictifs pour les préparer aux commissions réelles.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== LIBRARY VIEW ===== -->
+        <div id="view-library" class="hidden space-y-8 tab-transition">
+            <div class="bg-white rounded-xl shadow-sm border border-stone-100 p-6">
+                <h2 class="text-2xl font-semibold text-slate-700 mb-4">Bibliothèque Officielle Légifrance</h2>
+                <p class="text-stone-600 mb-6">
+                    Accès direct aux textes consolidés de la réglementation sécurité incendie.
+                    Utilisez le filtre pour trouver un texte spécifique. Tous les liens pointent vers les versions
+                    officielles sur Légifrance.
+                </p>
+
+                <!-- Search -->
+                <div class="mb-6 relative">
+                    <input type="text" id="linkSearch"
+                        placeholder="Filtrer les textes (ex: Sécurité, CTS, Électricité, Dégagements...)"
+                        class="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:border-accent transition-shadow">
+                    <i class="fas fa-search absolute left-3 top-3.5 text-gray-400"></i>
+                </div>
+
+                <!-- Statistics -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                    <div class="bg-gray-50 p-3 rounded text-center">
+                        <div class="text-2xl font-bold text-gray-900">15</div>
+                        <div class="text-xs text-gray-500">Textes référencés</div>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded text-center">
+                        <div class="text-2xl font-bold text-gray-900">6</div>
+                        <div class="text-xs text-gray-500">Thèmes principaux</div>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded text-center">
+                        <div class="text-2xl font-bold text-gray-900">2</div>
+                        <div class="text-xs text-gray-500">Arrêtés fondamentaux</div>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded text-center">
+                        <div class="text-2xl font-bold text-gray-900">1980-2024</div>
+                        <div class="text-xs text-gray-500">Période couverte</div>
+                    </div>
+                </div>
+
+                <!-- Links Table -->
+                <div class="overflow-hidden border border-gray-200 rounded-lg">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Thème
+                                </th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Titre &
+                                    Référence</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Mots
+                                    Clés</th>
+                                <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200" id="linksTableBody">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                    <div id="noResults" class="hidden p-8 text-center text-gray-500">
+                        <i class="fas fa-search mb-2 text-2xl"></i>
+                        <p>Aucun texte trouvé pour cette recherche.</p>
+                    </div>
+                </div>
+
+                <!-- Important Notes -->
+                <div class="mt-6 bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                    <h4 class="font-bold text-yellow-800 mb-2">📌 Notes importantes pour la :</h4>
+                    <ul class="text-sm text-yellow-700 space-y-1">
+                        <li>• Les textes sont accessibles dans leur version consolidée (mises à jour incluses)</li>
+                        <li>• Pour les arrêtés techniques, vérifiez toujours les annexes et notes</li>
+                        <li>• Les circulaires d'application complètent les arrêtés mais n'ont pas force
+                            réglementaire</li>
+                        <li>• En cas de doute, contactez la commission de sécurité compétente</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         </div>
     </main>
 
@@ -1112,9 +1971,9 @@
                             class="flex items-start text-[#495057] hover:text-[#0d6efd] transition">
                             <i class="fas fa-external-link-alt mr-2 mt-1"></i>
                             <div>
-                                <h5> Formation Sécurité ERP</h5>
+                                <h5> Sécurité ERP</h5>
                                 <p class="text-sm text-[#6c757d] mt-1">
-                                    Outil pédagogique open source destiné à la formation des responsables techniques d'ERP Type L
+                                    Outil pédagogique open source destiné à la des responsables techniques d'ERP Type L
                                 </p>
                             </div>
                         </a>
@@ -1136,10 +1995,11 @@
             <div class="mt-8 pt-8 border-t border-[#ced4da] text-center text-sm text-[#6c757d]">
                 <p>
                     <i class="fas fa-gavel mr-2"></i>
-                    Guide de la Sécurité Incendie  - Portail de Sécurité CTS & ERP Type L
+                    Guide de la Sécurité Incendie - Portail de Sécurité CTS & ERP Type L
                 </p>
                 <p class="mt-2">
-                    ©️ Open Source • Partage Contribution : https://github.com/fi-regie • Contact : philippe.potier-regie@proton.me
+                    ©️ Open Source • Partage Contribution : https://github.com/fi-regie • Contact :
+                    philippe.potier-regie@proton.me
                 </p>
             </div>
         </div>
@@ -1156,83 +2016,136 @@
                 windSpeed: 45,
                 maxWind: 100
             },
-            
-            // ===== NAVIGATION =====
+
+            // ===== NAVIGATION AVEC INDEXATION URL =====
             navigate: (viewId) => {
                 // Update State
                 app.state.currentView = viewId;
-                
+
+                // Update URL avec hash
+                if (history.pushState) {
+                    const newUrl = window.location.pathname + '#' + viewId;
+                    window.history.pushState({ view: viewId }, '', newUrl);
+                } else {
+                    window.location.hash = '#' + viewId;
+                }
+
                 // Hide all views
                 document.querySelectorAll('[id^="view-"]').forEach(el => {
                     el.classList.remove('active');
                     el.classList.add('hidden');
                 });
-                
+
                 // Show target view
                 const target = document.getElementById(`view-${viewId}`);
-                target.classList.remove('hidden');
-                setTimeout(() => {
-                    target.classList.add('active');
-                }, 10);
-                
+                if (target) {
+                    target.classList.remove('hidden');
+                    setTimeout(() => {
+                        target.classList.add('active');
+                    }, 10);
+                }
+
                 // Update Nav Buttons
                 document.querySelectorAll('.nav-tab').forEach(btn => {
                     btn.classList.remove('active', 'border-orange-600', 'text-orange-600');
                     btn.classList.add('border-transparent', 'text-gray-600');
                 });
-                
-                const activeBtn = [...document.querySelectorAll('.nav-tab')].find(btn => 
+
+                const activeBtn = [...document.querySelectorAll('.nav-tab')].find(btn =>
                     btn.getAttribute('onclick')?.includes(`navigate('${viewId}')`)
                 );
-                
-                if(activeBtn) {
+
+                if (activeBtn) {
                     activeBtn.classList.add('active', 'border-orange-600', 'text-orange-600');
                     activeBtn.classList.remove('border-transparent', 'text-gray-600');
                 }
-                
+
                 // Scroll to top
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                
+
                 // Initialize view-specific components
-                if(viewId === 'classification') {
+                if (viewId === 'classification') {
                     calculateCategory();
-                } else if(viewId === 'evacuation') {
+                } else if (viewId === 'evacuation') {
                     updateEvacuation(500);
-                } else if(viewId === 'library') {
+                    toggleRole('guide');
+                } else if (viewId === 'extinguishers') {
+                    selectFireClass('A');
+                } else if (viewId === 'theory') {
+                    updateTriangleInfo(0);
+                } else if (viewId === 'library') {
                     renderLinksTable(regulationsData);
                 }
             },
-            
-            // ===== INITIALIZATION =====
+
+            // ===== GESTION DE L'HISTORIQUE =====
+            handlePopState: (event) => {
+                if (event.state && event.state.view) {
+                    app.navigate(event.state.view);
+                } else {
+                    // Vérifier le hash dans l'URL
+                    const hash = window.location.hash.substring(1);
+                    const validViews = ['dashboard', 'classification', 'materials', 'evacuation', 'theory', 'extinguishers', 'cts', 'library'];
+                    if (hash && validViews.includes(hash)) {
+                        app.navigate(hash);
+                    } else {
+                        app.navigate('dashboard');
+                    }
+                }
+            },
+
+            // ===== INITIALISATION AVEC VÉRIFICATION URL =====
             init: () => {
+                // Vérifier l'URL au chargement
+                const hash = window.location.hash.substring(1);
+                const validViews = ['dashboard', 'classification', 'materials', 'evacuation', 'theory', 'extinguishers', 'cts', 'library'];
+
+                let initialView = 'dashboard';
+                if (hash && validViews.includes(hash)) {
+                    initialView = hash;
+                }
+
                 // Initialize all charts
                 initCharts();
-                
+
                 // Initialize data
                 calculateCategory();
                 updateEvacuation(500);
                 updateWindSimulator();
                 renderLinksTable(regulationsData);
                 setupSearch();
-                
-                // Start with dashboard
-                app.navigate('dashboard');
-                
+
+                // Initialize extinguishers
+                selectFireClass('A');
+
+                // Initialize evacuation roles
+                toggleRole('guide');
+
+                // Start with appropriate view based on URL
+                app.navigate(initialView);
+
                 // Initialize navigation
                 initNavigation();
+
+                // Initialize quiz options
+                initQuizOptions();
+
+                // Écouter les changements d'URL
+                window.addEventListener('popstate', app.handlePopState);
             }
         };
-        
+
         // ===== INITIALIZE NAVIGATION =====
         function initNavigation() {
-            // Add event listeners to all nav buttons
-            document.querySelectorAll('.nav-tab').forEach(btn => {
-                if (btn.getAttribute('onclick')?.includes('navigate')) {
-                    // Already has onclick, keep it
+            // Ajouter des IDs aux boutons pour faciliter la sélection
+            document.querySelectorAll('.nav-tab').forEach((btn, index) => {
+                const viewIds = ['dashboard', 'classification', 'materials', 'evacuation', 'theory', 'extinguishers', 'cts', 'library'];
+                if (index < viewIds.length) {
+                    btn.id = `nav-${viewIds[index]}`;
                 }
             });
         }
-        
+
         // ===== DATA =====
         const regulationsData = [
             {
@@ -1341,22 +2254,133 @@
                 url: "https://www.legifrance.gouv.fr/codes/id/LEGITEXT000025503132/"
             }
         ];
-        
+
+        // ===== FIRE THEORY DATA =====
+        const fireTheoryData = {
+            triangle: {
+                labels: ['Combustible', 'Comburant', 'Énergie'],
+                data: [1, 1, 1],
+                details: [
+                    {
+                        title: "Le Combustible",
+                        desc: "C'est la matière qui brûle. Il peut être solide (bois), liquide (essence) ou gazeux (butane). Sans combustible, le feu n'a rien à 'manger'. Dans les ERP, les combustibles sont limités par le classement M des matériaux.",
+                        action: "Suppression : Éloigner les objets inflammables ou fermer la vanne de gaz. En prévention : utiliser des matériaux classés M1."
+                    },
+                    {
+                        title: "Le Comburant",
+                        desc: "C'est ce qui permet au feu de respirer. Sur Terre, c'est principalement l'Oxygène de l'air (environ 21%). Sans oxygène, le feu s'étouffe. Dans les bâtiments, l'air est toujours présent.",
+                        action: "Étouffement : Couvrir le feu avec une couverture ou de la mousse pour le priver d'air. Le désenfumage limite l'apport d'oxygène."
+                    },
+                    {
+                        title: "L'Énergie d'Activation",
+                        desc: "C'est la chaleur ou l'étincelle qui déclenche la réaction. Il faut une température minimale pour que le feu démarre (température d'auto-inflammation).",
+                        action: "Refroidissement : Arroser avec de l'eau pour faire baisser la température en dessous du point d'inflammation. C'est le principe des extincteurs à eau."
+                    }
+                ]
+            }
+        };
+
+        // ===== EXTINGUISHER DATA =====
+        const extinguisherData = {
+            'A': {
+                title: "Feux de Solides (Secs)",
+                subtitle: "Bois, Papier, Tissus, Carton",
+                icon: "🪵",
+                recommended: [
+                    "Eau Pulvérisée + Additif (Le plus efficace)",
+                    "Poudre ABC (Polyvalent mais salissant)",
+                    "Mousse (Pour certains textiles)"
+                ],
+                warning: "L'eau simple est efficace mais l'additif améliore grandement la pénétration. La Poudre est très efficace mais réduit la visibilité et est corrosive."
+            },
+            'B': {
+                title: "Feux de Liquides (Gras)",
+                subtitle: "Essence, Hydrocarbures, Solvants, Huiles",
+                icon: "⛽",
+                recommended: [
+                    "Poudre ABC ou BC (Très efficace)",
+                    "CO2 (Pour les petits feux, ne laisse pas de résidu)",
+                    "Eau + Additif (Crée un film isolant)"
+                ],
+                warning: "Ne jamais utiliser d'eau pure (risque de projection du liquide enflammé). Le CO2 est efficace mais nécessite de s'approcher très près."
+            },
+            'C': {
+                title: "Feux de Gaz",
+                subtitle: "Propane, Butane, Gaz naturel",
+                icon: "💨",
+                recommended: [
+                    "Poudre ABC ou BC"
+                ],
+                warning: "La priorité absolue est de COUPER L'ARRIVÉE DE GAZ. Éteindre la flamme sans couper le gaz crée un risque d'explosion imminent. Ne jamais éteindre un feu de gaz si on ne peut pas couper l'arrivée."
+            },
+            'D': {
+                title: "Feux de Métaux",
+                subtitle: "Limaille de fer, Aluminium, Magnésium",
+                icon: "⚙️",
+                recommended: [
+                    "Poudre Spéciale D uniquement"
+                ],
+                warning: "Interdiction absolue d'utiliser de l'eau. Risque de réaction violente et d'explosion. Ces feux sont très rares dans les ERP."
+            },
+            'F': {
+                title: "Auxiliaires de Cuisson",
+                subtitle: "Huiles et graisses végétales/animales (Friteuses)",
+                icon: "🍳",
+                recommended: [
+                    "Extincteur Spécial F (Agents chimiques humides)",
+                    "Couverture anti-feu"
+                ],
+                warning: "L'eau provoque une explosion de vapeur d'huile brûlante. Le CO2 est inefficace (ré-inflammation). Les extincteurs F créent un film isolant à la surface."
+            }
+        };
+
+        // ===== EVACUATION ROLES DATA =====
+        const evacuationRoles = {
+            guide: {
+                title: "Le Guide-File",
+                subtitle: "Dirige le groupe vers la sortie la plus proche",
+                colorClass: "bg-orange-600",
+                icon: "👷",
+                equipment: "Gilet de signalisation (souvent Vert) + Lampe Torche + Sifflet",
+                missions: [
+                    "✅ Dirige les personnes vers la sortie de secours la plus proche.",
+                    "✅ S'oppose à l'utilisation des ascenseurs.",
+                    "✅ Guide le groupe jusqu'au point de rassemblement.",
+                    "✅ Participe au comptage des effectifs.",
+                    "✅ Connaît parfaitement le plan d'évacuation."
+                ]
+            },
+            serre: {
+                title: "Le Serre-File",
+                subtitle: "S'assure que personne ne reste derrière",
+                colorClass: "bg-red-600",
+                icon: "🛡️",
+                equipment: "Gilet de signalisation (souvent Rouge) + Lampe Torche",
+                missions: [
+                    "✅ Visite tous les locaux de sa zone (toilettes incluses).",
+                    "✅ S'assure de la fermeture des portes et fenêtres (sans verrouiller).",
+                    "✅ Empêche les personnes de revenir en arrière.",
+                    "✅ Rend compte de l'évacuation au responsable.",
+                    "✅ Vérifie que personne n'est resté dans les sanitaires."
+                ]
+            }
+        };
+
         // ===== CHART INSTANCES =====
-        let classificationChart, materialsChart, evacChart, windChart, overviewChart, violationsChart;
-        
-        // ===== FUNCTIONS =====
-        
+        let classificationChart, materialsChart, evacChart, windChart, overviewChart, violationsChart, triangleChart;
+
+        // ===== FONCTIONS =====
+
         // Classification Calculator
         function calculateCategory() {
             const capacityInput = document.getElementById('capacityInput');
             if (!capacityInput) return;
-            
+
             const capacity = parseInt(capacityInput.value) || 0;
             app.state.capacity = capacity;
-            
+
             let category, desc, implication, barColors;
-            
+
             if (capacity > 1500) {
                 category = "1ère Catégorie";
                 desc = "Plus de 1 500 personnes.";
@@ -1370,7 +2394,7 @@
             } else if (capacity > 300) {
                 category = "3ème Catégorie";
                 desc = "De 301 à 700 personnes.";
-                implication = "SSIAP selon risque. Visites tous les 3 ans. Formation personnel obligatoire.";
+                implication = "SSIAP selon risque. Visites tous les 3 ans. personnel obligatoire.";
                 barColors = ['#d1d5db', '#ea580c', '#d1d5db', '#d1d5db'];
             } else if (capacity >= 200) {
                 category = "4ème Catégorie";
@@ -1383,17 +2407,17 @@
                 implication = "Règlementation minimale. Issues dégagées, extincteurs, alarme obligatoires.";
                 barColors = ['#3b82f6', '#d1d5db', '#d1d5db', '#d1d5db'];
             }
-            
+
             // Update UI
             const catText = document.getElementById('catText');
             const catDesc = document.getElementById('catDesc');
             const catImplication = document.getElementById('catImplication');
-            
-            if(catText && catDesc && catImplication) {
+
+            if (catText && catDesc && catImplication) {
                 catText.textContent = category;
                 catDesc.textContent = desc;
                 catImplication.textContent = implication;
-                
+
                 // Update exits result if on evacuation page
                 const exitsResult = document.getElementById('exitsResult');
                 if (exitsResult) {
@@ -1405,58 +2429,58 @@
                         exitsResult.textContent = "1 issue suffisante";
                     }
                 }
-                
+
                 // Update Chart Colors
-                if(classificationChart) {
+                if (classificationChart) {
                     classificationChart.data.datasets[0].backgroundColor = barColors;
                     classificationChart.update();
                 }
             }
         }
-        
+
         // Materials Highlight
         function highlightMaterial(index) {
             const materialCards = document.querySelectorAll('.material-card');
             if (!materialCards.length) return;
-            
+
             materialCards.forEach(el => {
                 el.classList.remove('ring-2', 'ring-green-500', 'bg-green-50', 'bg-gray-50', 'ring-gray-400', 'ring-red-400');
                 el.classList.add('bg-white');
             });
-            
+
             const ids = ['m0-card', 'm1-card', 'm2-card', 'm4-card'];
             const selected = document.getElementById(ids[index]);
-            if(selected) {
+            if (selected) {
                 selected.classList.remove('bg-white');
                 const ringColors = ['ring-gray-400', 'ring-green-500', 'ring-yellow-400', 'ring-red-400'];
                 selected.classList.add('bg-gray-50', 'ring-2', ringColors[index]);
             }
-            
+
             // Update Chart Highlight
             const colors = ['#9CA3AF', '#059669', '#D97706', '#ea580c'];
             const bgColors = colors.map((c, i) => i === index ? c : c + '40');
-            
-            if(materialsChart) {
+
+            if (materialsChart) {
                 materialsChart.data.datasets[0].backgroundColor = bgColors;
                 materialsChart.update();
             }
         }
-        
+
         // Evacuation Calculator
         function updateEvacuation(val) {
             const evacValue = document.getElementById('evacValue');
             const upResult = document.getElementById('upResult');
             const widthResult = document.getElementById('widthResult');
             const exitsResult = document.getElementById('exitsResult');
-            
-            if(!evacValue || !upResult || !widthResult) return;
-            
+
+            if (!evacValue || !upResult || !widthResult) return;
+
             evacValue.textContent = val;
-            
+
             let ups = Math.ceil(val / 100);
-            if(ups < 2 && val > 19) ups = 2;
-            if(val === 0) ups = 0;
-            
+            if (ups < 2 && val > 19) ups = 2;
+            if (val === 0) ups = 0;
+
             let width;
             if (ups === 1) {
                 width = 0.90;
@@ -1465,10 +2489,10 @@
             } else {
                 width = (ups * 0.60).toFixed(2);
             }
-            
+
             upResult.textContent = ups;
             widthResult.textContent = width + "m";
-            
+
             if (exitsResult) {
                 if (val > 1000) {
                     exitsResult.textContent = "3 issues minimum";
@@ -1481,30 +2505,30 @@
                 }
             }
         }
-        
+
         // Wind Simulator
         function updateWindSimulator() {
             const slider = document.getElementById('currentWindInput');
             const display = document.getElementById('currentWindDisplay');
             const maxSelect = document.getElementById('maxWindInput');
-            
-            if(!slider || !display || !maxSelect) return;
-            
+
+            if (!slider || !display || !maxSelect) return;
+
             const current = parseInt(slider.value);
             const max = parseInt(maxSelect.value);
-            
+
             display.innerText = current + " km/h";
-            
+
             const statusBox = document.getElementById('weatherStatus');
             const icon = document.getElementById('weatherIcon');
             const title = document.getElementById('weatherTitle');
             const desc = document.getElementById('weatherDesc');
-            
+
             const warningThreshold = max * 0.75;
             const dangerThreshold = max * 0.90;
-            
+
             statusBox.className = "p-4 rounded-lg flex items-start gap-3 transition-colors duration-300 border";
-            
+
             if (current >= max) {
                 statusBox.classList.add('bg-red-100', 'border-red-200');
                 icon.innerHTML = '<i class="fas fa-exclamation-triangle text-red-600 text-2xl"></i>';
@@ -1542,23 +2566,146 @@
                 desc.className = "text-sm text-green-700";
             }
         }
-        
+
+        // Extinguisher Selection
+        function selectFireClass(fireClass) {
+            const data = extinguisherData[fireClass];
+
+            // UI Visual Feedback for Buttons
+            document.querySelectorAll('.fire-class-btn').forEach(btn => {
+                btn.classList.remove('border-red-500', 'bg-red-50', 'active');
+                btn.classList.add('border-gray-200', 'bg-white');
+            });
+            const activeBtn = document.getElementById(`btn-class-${fireClass}`);
+            activeBtn.classList.remove('border-gray-200', 'bg-white');
+            activeBtn.classList.add('border-red-500', 'bg-red-50', 'active');
+
+            // Show Content Area, Hide Placeholder
+            document.getElementById('extinguisher-result-placeholder').classList.add('hidden');
+            const contentArea = document.getElementById('extinguisher-result-content');
+            contentArea.classList.remove('hidden');
+            contentArea.classList.remove('slide-in'); // reset animation
+            void contentArea.offsetWidth;
+            contentArea.classList.add('slide-in');
+
+            // Populate Data
+            document.getElementById('result-icon').textContent = data.icon;
+            document.getElementById('result-title').textContent = data.title;
+            document.getElementById('result-subtitle').textContent = `Classe ${fireClass} - ${data.subtitle}`;
+            document.getElementById('result-warning').textContent = data.warning;
+
+            const list = document.getElementById('result-recommended');
+            list.innerHTML = '';
+            data.recommended.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                list.appendChild(li);
+            });
+        }
+
+        // Evacuation Role Toggle
+        function toggleRole(role) {
+            const data = evacuationRoles[role];
+
+            // Button Styles
+            const btnGuide = document.getElementById('btn-role-guide');
+            const btnSerre = document.getElementById('btn-role-serre');
+
+            // Reset both to inactive
+            [btnGuide, btnSerre].forEach(btn => {
+                btn.classList.remove('active', 'bg-orange-600', 'bg-red-600', 'text-white', 'ring-2');
+                btn.classList.add('bg-white', 'text-gray-600');
+            });
+
+            // Activate specific button
+            const activeBtn = role === 'guide' ? btnGuide : btnSerre;
+            const activeColor = role === 'guide' ? 'bg-orange-600' : 'bg-red-600';
+            const ringColor = role === 'guide' ? 'ring-orange-600' : 'ring-red-600';
+
+            activeBtn.classList.remove('bg-white', 'text-gray-600');
+            activeBtn.classList.add('active', activeColor, 'text-white', 'ring-2', ringColor, 'ring-offset-2');
+
+            // Update Card Content
+            const header = document.getElementById('role-header');
+            header.className = `p-6 text-white text-center transition-colors duration-500 ${activeColor}`;
+
+            document.getElementById('role-title').textContent = data.title;
+            document.getElementById('role-subtitle').textContent = data.subtitle;
+            document.getElementById('role-icon').textContent = data.icon;
+            document.getElementById('role-equipment').textContent = data.equipment;
+
+            const missionList = document.getElementById('role-missions');
+            missionList.innerHTML = '';
+            data.missions.forEach(mission => {
+                const li = document.createElement('li');
+                li.className = "flex items-start";
+                li.innerHTML = `<span class="mr-2 mt-1.5 w-2 h-2 rounded-full ${role === 'guide' ? 'bg-orange-500' : 'bg-red-500'} flex-shrink-0"></span><span>${mission.replace('✅ ', '')}</span>`;
+                missionList.appendChild(li);
+            });
+        }
+
+        // Fire Theory Triangle Update
+        function updateTriangleInfo(index) {
+            const info = fireTheoryData.triangle.details[index];
+            const titleEl = document.getElementById('triangle-title');
+            const descEl = document.getElementById('triangle-desc');
+            const actionBox = document.getElementById('triangle-action');
+            const actionText = document.getElementById('triangle-action-text');
+
+            // Colors based on index
+            const colors = ['text-orange-600', 'text-blue-600', 'text-red-600'];
+
+            titleEl.className = `text-2xl font-bold mb-4 ${colors[index]}`;
+            titleEl.textContent = info.title;
+            descEl.innerHTML = info.desc;
+
+            actionBox.classList.remove('hidden');
+            actionBox.className = "mt-6 p-4 rounded-lg bg-gray-50 border-l-4 " + colors[index].replace('text-', 'border-');
+            actionText.textContent = info.action;
+        }
+
+        // Quiz answer checker
+        function checkQuizAnswer(button, correctAnswer) {
+            const options = button.parentElement.querySelectorAll('.quiz-option');
+            options.forEach(opt => {
+                opt.classList.remove('bg-green-100', 'border-green-500', 'text-green-700', 'bg-red-100', 'border-red-500', 'text-red-700');
+                opt.classList.add('bg-gray-100');
+            });
+
+            // For demo, all B answers are correct
+            const isCorrect = button.textContent.includes('B.') || button.textContent.includes('B)');
+
+            if (isCorrect) {
+                button.classList.remove('bg-gray-100');
+                button.classList.add('bg-green-100', 'border-green-500', 'text-green-700');
+                setTimeout(() => {
+                    alert("Bonne réponse ! 👍");
+                }, 100);
+            } else {
+                button.classList.remove('bg-gray-100');
+                button.classList.add('bg-red-100', 'border-red-500', 'text-red-700');
+                setTimeout(() => {
+                    alert("Pas tout à fait. La bonne réponse est B. 👍");
+                }, 100);
+            }
+        }
+
         // Library Search
         function renderLinksTable(data) {
             const tbody = document.getElementById('linksTableBody');
             const noResults = document.getElementById('noResults');
-            
-            if(!tbody) return;
-            
+
+            if (!tbody) return;
+
             tbody.innerHTML = '';
-            
-            if(data.length === 0) {
-                if(noResults) noResults.classList.remove('hidden');
+
+            if (data.length === 0) {
+                if (noResults) noResults.classList.remove('hidden');
                 return;
             } else {
-                if(noResults) noResults.classList.add('hidden');
+                if (noResults) noResults.classList.add('hidden');
             }
-            
+
             data.forEach(item => {
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-gray-50 transition-colors";
@@ -1586,37 +2733,42 @@
                 tbody.appendChild(tr);
             });
         }
-        
+
         function setupSearch() {
             const input = document.getElementById('linkSearch');
-            if(!input) return;
-            
+            if (!input) return;
+
             input.addEventListener('input', (e) => {
                 const term = e.target.value.toLowerCase();
-                const filtered = regulationsData.filter(item => 
-                    item.title.toLowerCase().includes(term) || 
-                    item.desc.toLowerCase().includes(term) || 
+                const filtered = regulationsData.filter(item =>
+                    item.title.toLowerCase().includes(term) ||
+                    item.desc.toLowerCase().includes(term) ||
                     item.keywords.some(k => k.toLowerCase().includes(term)) ||
                     item.theme.toLowerCase().includes(term)
                 );
                 renderLinksTable(filtered);
             });
         }
-        
+
+        // Initialize quiz options
+        function initQuizOptions() {
+            // Already handled by inline onclick handlers
+        }
+
         // ===== CHARTS INITIALIZATION =====
         function initCharts() {
             Chart.defaults.font.family = "'Inter', sans-serif";
-            
+
             // 1. Overview Chart (Dashboard)
             const ctxOverview = document.getElementById('overviewChart');
-            if(ctxOverview) {
+            if (ctxOverview) {
                 overviewChart = new Chart(ctxOverview.getContext('2d'), {
                     type: 'doughnut',
                     data: {
-                        labels: ['Sécurité Incendie', 'Solidité / Vent', 'Administratif', 'Droit du Travail', 'Autres'],
+                        labels: ['Sécurité Incendie', 'Réglementation', 'Matériaux', 'Évacuation', 'CTS'],
                         datasets: [{
-                            data: [35, 25, 20, 15, 5],
-                            backgroundColor: ['#ea580c', '#D97706', '#374151', '#9CA3AF', '#FCD34D'],
+                            data: [35, 25, 15, 15, 10],
+                            backgroundColor: ['#ea580c', '#D97706', '#374151', '#059669', '#9CA3AF'],
                             borderWidth: 0
                         }]
                     },
@@ -1624,7 +2776,7 @@
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
-                            legend: { 
+                            legend: {
                                 position: 'right',
                                 labels: {
                                     font: {
@@ -1636,10 +2788,10 @@
                     }
                 });
             }
-            
+
             // 2. Classification Chart
             const ctxClass = document.getElementById('classificationChart');
-            if(ctxClass) {
+            if (ctxClass) {
                 classificationChart = new Chart(ctxClass.getContext('2d'), {
                     type: 'bar',
                     data: {
@@ -1654,38 +2806,38 @@
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
-                        plugins: { 
+                        plugins: {
                             legend: { display: false },
                             tooltip: {
                                 callbacks: {
-                                    label: function(context) {
+                                    label: function (context) {
                                         return `Seuil : ${context.parsed.y} personnes`;
                                     }
                                 }
                             }
                         },
                         scales: {
-                            y: { 
-                                display: true, 
-                                title: { 
-                                    display: true, 
-                                    text: 'Jauge Maximale (Personnes)' 
+                            y: {
+                                display: true,
+                                title: {
+                                    display: true,
+                                    text: 'Jauge Maximale (Personnes)'
                                 },
                                 grid: {
                                     display: true
                                 }
                             },
-                            x: { 
+                            x: {
                                 grid: { display: false }
                             }
                         }
                     }
                 });
             }
-            
+
             // 3. Materials Chart
             const ctxMat = document.getElementById('materialsChart');
-            if(ctxMat) {
+            if (ctxMat) {
                 materialsChart = new Chart(ctxMat.getContext('2d'), {
                     type: 'doughnut',
                     data: {
@@ -1701,16 +2853,16 @@
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
-                            legend: { 
-                                position: 'bottom', 
-                                labels: { 
-                                    usePointStyle: true, 
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    usePointStyle: true,
                                     font: { size: 10 },
                                     padding: 15
-                                } 
+                                }
                             },
-                            title: { 
-                                display: true, 
+                            title: {
+                                display: true,
                                 text: 'Répartition de Sécurité Idéale en ERP Type L',
                                 font: {
                                     size: 14
@@ -1721,10 +2873,10 @@
                     }
                 });
             }
-            
+
             // 4. Violations Chart
             const ctxViol = document.getElementById('violationsChart');
-            if(ctxViol) {
+            if (ctxViol) {
                 violationsChart = new Chart(ctxViol.getContext('2d'), {
                     type: 'bar',
                     data: {
@@ -1740,8 +2892,8 @@
                         responsive: true,
                         maintainAspectRatio: false,
                         scales: {
-                            y: { 
-                                beginAtZero: true, 
+                            y: {
+                                beginAtZero: true,
                                 max: 40,
                                 grid: { display: false },
                                 title: {
@@ -1749,15 +2901,15 @@
                                     text: 'Pourcentage des visites'
                                 }
                             },
-                            x: { 
+                            x: {
                                 grid: { display: false }
                             }
                         },
-                        plugins: { 
+                        plugins: {
                             legend: { display: false },
                             tooltip: {
                                 callbacks: {
-                                    label: function(context) {
+                                    label: function (context) {
                                         return `${context.parsed.y}% des avis défavorables`;
                                     }
                                 }
@@ -1766,10 +2918,10 @@
                     }
                 });
             }
-            
+
             // 5. Evacuation Chart
             const ctxEvac = document.getElementById('evacChart');
-            if(ctxEvac) {
+            if (ctxEvac) {
                 const population = [0, 20, 50, 100, 200, 300, 500, 700, 1000, 1500, 2000];
                 const widths = population.map(p => {
                     let ups = Math.ceil(p / 100);
@@ -1779,7 +2931,7 @@
                     if (ups === 2) return 1.40;
                     return (ups * 0.60);
                 });
-                
+
                 evacChart = new Chart(ctxEvac.getContext('2d'), {
                     type: 'line',
                     data: {
@@ -1804,7 +2956,7 @@
                         plugins: {
                             tooltip: {
                                 callbacks: {
-                                    label: function(context) {
+                                    label: function (context) {
                                         const p = context.label;
                                         let ups = Math.ceil(p / 100);
                                         if (ups < 2 && p > 19) ups = 2;
@@ -1817,19 +2969,19 @@
                             }
                         },
                         scales: {
-                            x: { 
-                                title: { 
-                                    display: true, 
-                                    text: 'Public à Évacuer (Personnes)' 
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Public à Évacuer (Personnes)'
                                 },
                                 grid: {
                                     display: true
                                 }
                             },
-                            y: { 
-                                title: { 
-                                    display: true, 
-                                    text: 'Largeur Cumulée des Sorties (m)' 
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Largeur Cumulée des Sorties (m)'
                                 },
                                 grid: {
                                     display: true
@@ -1839,10 +2991,10 @@
                     }
                 });
             }
-            
+
             // 6. Wind Chart
             const ctxWind = document.getElementById('windChart');
-            if(ctxWind) {
+            if (ctxWind) {
                 windChart = new Chart(ctxWind.getContext('2d'), {
                     type: 'bar',
                     data: {
@@ -1858,11 +3010,11 @@
                         responsive: true,
                         maintainAspectRatio: false,
                         scales: {
-                            y: { 
-                                display: false, 
-                                max: 100 
+                            y: {
+                                display: false,
+                                max: 100
                             },
-                            x: { 
+                            x: {
                                 grid: { display: false }
                             }
                         },
@@ -1885,15 +3037,52 @@
                     }
                 });
             }
+
+            // 7. Triangle Chart (Fire Theory)
+            const ctxTriangle = document.getElementById('triangleChart');
+            if (ctxTriangle) {
+                triangleChart = new Chart(ctxTriangle.getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: fireTheoryData.triangle.labels,
+                        datasets: [{
+                            data: fireTheoryData.triangle.data,
+                            backgroundColor: [
+                                '#f97316', // Orange (Combustible)
+                                '#3b82f6', // Blue (Comburant)
+                                '#ef4444'  // Red (Energy)
+                            ],
+                            hoverOffset: 15,
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '60%',
+                        plugins: {
+                            legend: { position: 'bottom' },
+                            tooltip: { enabled: false } // Custom click interaction instead
+                        },
+                        onClick: (event, elements) => {
+                            if (elements.length > 0) {
+                                const index = elements[0].index;
+                                updateTriangleInfo(index);
+                            }
+                        }
+                    }
+                });
+            }
         }
-        
+
         // ===== INITIALIZE APP =====
         document.addEventListener('DOMContentLoaded', app.init);
-        
+
         // S'assurer que la page commence toujours en haut
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             window.scrollTo(0, 0);
         });
     </script>
 </body>
+
 </html>
